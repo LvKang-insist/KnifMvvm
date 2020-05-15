@@ -1,0 +1,14 @@
+rootProject.name='KnifeMvvm_Kt'
+include ':app'
+include ':module-main'
+include ':module-home'
+
+//app module
+include ':module'
+include ':module:home'
+
+//library
+include ':library-core'
+include ':module-sort'
+include ':module-discover'
+include ':module-user'
