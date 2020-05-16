@@ -2,21 +2,13 @@ package com.lv.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.lv.library_core.base.single.BaseSingleActivity
 import com.lv.module_home.HomeFragment
-import kotlinx.android.synthetic.main.activity_single.*
 
-class SingleActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_single)
-
-
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frame_layout, HomeFragment())
-            .commit()
-
+class SingleActivity : BaseSingleActivity() {
+    override fun setFragment(): Fragment {
+        return HomeFragment()
     }
+
 }

@@ -18,7 +18,10 @@
             <option value="$PROJECT_DIR$/module-main" />
             <option value="$PROJECT_DIR$/module-sort" />
             <option value="$PROJECT_DIR$/module-user" />
+            <option value="$PROJECT_DIR$/module/discover" />
             <option value="$PROJECT_DIR$/module/home" />
+            <option value="$PROJECT_DIR$/module/sort" />
+            <option value="$PROJECT_DIR$/module/user" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

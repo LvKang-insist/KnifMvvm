@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.elvishew.xlog.XLog
+import com.lv.library_core.base.frag.BaseFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 
 /**
@@ -16,12 +18,14 @@ import com.xiaojinzi.component.anno.FragmentAnno
  */
 
 @FragmentAnno("sort-fragment")
-class SortFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.sort_frag, container, false)
+class SortFragment : BaseFragment() {
+    override fun layout(): Int {
+        return R.layout.sort_frag
     }
+
+    override fun bindView(rootView: View) {
+
+    }
+
+
 }

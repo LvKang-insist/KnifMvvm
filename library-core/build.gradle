@@ -13,12 +13,6 @@ android {
         versionName rootProject.android.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                // 配置业务模块的模块名称
-                arguments = ["HOST": "core"]
-            }
-        }
     }
 
     buildTypes {
@@ -57,6 +51,4 @@ dependencies {
 
     //小金子路由
     api 'com.github.xiaojinzi123.Component:component-impl:1.8.2.2-androidx'
-
-    kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
 }

@@ -6,8 +6,11 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.lv.library_core.base.activity.BaseBindingActivity
 import com.lv.library_core.base.activity.BaseLayoutActivity
@@ -61,17 +64,25 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
      */
     private var mSelectColor = Color.RED
 
+    private var isVpScroll = false
+
     private val mLayoutInflater by lazy { LayoutInflater.from(this) }
     private val mainContentAdapter by lazy {
         MainContentAdapter(supportFragmentManager, lifecycle, mFragments)
     }
 
+
+    override fun layout(): Int {
+        return R.layout.bottom_activity
+    }
+
     override fun bindView() {
+        isScroll = isScroll()
         initItem()
         val size = mItems.size
         for (i in 0 until size) {
             mLayoutInflater.inflate(R.layout.layout_bottom_item, bottom_bar)
-            val item = bottom_bar.getChildAt(i) as RelativeLayout
+            val item = bottom_bar.getChildAt(i) as LinearLayoutCompat
             item.setOnClickListener(this)
             item.tag = i
             val itemIcon = item.getChildAt(0) as AppCompatImageView
@@ -89,16 +100,15 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
         bottom_vp_content.adapter = mainContentAdapter
         bottom_vp_content.currentItem = mIndexPos
         bottom_vp_content.isUserInputEnabled = isScroll
+//        bottom_vp_content.setPagerEnabled(isScroll)
+
         bottom_vp_content.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-//                if (isScroll){
-//                    Toast.makeText(
-//                        this@BaseMainTabItemActivity,
-//                        "$position",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                    setScrollTab(position)
-//                }
+                if (isVpScroll) {
+                    isVpScroll = false
+                    return
+                }
+                setScrollTab(position)
             }
         })
     }
@@ -120,6 +130,7 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
 
     abstract fun setSelectColor(): Int
 
+    open fun isScroll(): Boolean = false
 
     override fun onClick(v: View) {
         val pos = v.tag as Int
@@ -128,7 +139,7 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
 
     private fun setScrollTab(pos: Int) {
         defaultTab()
-        val item = bottom_bar.getChildAt(pos) as RelativeLayout
+        val item = bottom_bar.getChildAt(pos) as LinearLayoutCompat
         val itemIcon = item.getChildAt(0) as AppCompatImageView
         val itemTitle = item.getChildAt(1) as AppCompatTextView
         val bottomTabBean = mTabBeans[pos]
@@ -138,21 +149,15 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
 
 
     private fun setTab(pos: Int) {
-        defaultTab()
-        val item = bottom_bar.getChildAt(pos) as RelativeLayout
-        val itemIcon = item.getChildAt(0) as AppCompatImageView
-        val itemTitle = item.getChildAt(1) as AppCompatTextView
-        val bottomTabBean = mTabBeans[pos]
-        GlideUtils.load(itemIcon, bottomTabBean.selectIcon)
-        itemIcon.setImageResource(bottomTabBean.selectIcon)
-        itemTitle.setTextColor(mSelectColor)
+        isVpScroll = true
+        setScrollTab(pos)
         bottom_vp_content.setCurrentItem(pos, false)
     }
 
     private fun defaultTab() {
         val size = mItems.size
         for (i in 0 until size) {
-            val item = bottom_bar.getChildAt(i) as RelativeLayout
+            val item = bottom_bar.getChildAt(i) as LinearLayoutCompat
             val itemIcon = item.getChildAt(0) as AppCompatImageView
             val itemTitle = item.getChildAt(1) as AppCompatTextView
             val bottomTabBean = mTabBeans[i]

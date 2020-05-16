@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.elvishew.xlog.XLog
 import com.xiaojinzi.component.anno.FragmentAnno
 
 /**
@@ -24,4 +25,5 @@ class DiscoverFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.discover_frag, container, false)
     }
+
 }

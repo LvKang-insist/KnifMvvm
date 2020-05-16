@@ -6,16 +6,20 @@
 
     </data>
 
-    <RelativeLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:orientation="vertical"
         tools:ignore="ObsoleteLayoutParam">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/layout_item_icon"
             android:layout_width="35dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
             android:layout_height="35dp"
             android:layout_centerHorizontal="true"
             android:gravity="center" />
@@ -28,5 +32,5 @@
             android:gravity="center" />
 
 
-    </RelativeLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

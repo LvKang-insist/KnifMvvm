@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.elvishew.xlog.XLog
+import com.hjq.toast.ToastUtils
+import com.lv.library_core.base.frag.BaseFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 
 /**
@@ -15,13 +18,15 @@ import com.xiaojinzi.component.anno.FragmentAnno
  * @description
  */
 
-@FragmentAnno("homeFragment")
-class HomeFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.home_frag, container, false)
+@FragmentAnno("HomeFragment")
+class HomeFragment : BaseFragment() {
+
+    override fun layout(): Int {
+        return R.layout.home_frag
     }
+
+    override fun bindView(rootView: View) {
+
+    }
+
 }

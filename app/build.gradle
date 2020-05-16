@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.xiaojinzi.component.plugin'
+
 android {
 
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -13,6 +14,7 @@ android {
         versionCode rootProject.android.versionCode
         versionName rootProject.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 // 配置业务模块的模块名称
@@ -35,5 +37,10 @@ android {
 dependencies {
     implementation project(path: ':module-main')
     implementation project(path: ':library-core')
+
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
+    implementation project(path: ':module-discover')
+    implementation project(path: ':module-home')
+    implementation project(path: ':module-sort')
+    implementation project(path: ':module-user')
 }

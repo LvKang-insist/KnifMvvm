@@ -3,6 +3,7 @@ package com.lv.module_main.activity.bottom
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -19,8 +20,7 @@ class MainContentAdapter(
     fragmentActivity: FragmentManager,
     lifecycle: Lifecycle,
     private val fragments: List<Fragment>
-) :
-    FragmentStateAdapter(fragmentActivity, lifecycle) {
+) : FragmentStateAdapter(fragmentActivity, lifecycle) {
     override fun getItemCount(): Int {
         return fragments.size
     }
@@ -30,3 +30,19 @@ class MainContentAdapter(
     }
 
 }
+//class MainContentAdapter(
+//    fragmentManager: FragmentManager,
+//    behavior: Int,
+//    private val fragments: List<Fragment>
+//) :
+//    FragmentStatePagerAdapter(fragmentManager, behavior) {
+//
+//    override fun getItem(position: Int): Fragment {
+//        return fragments[position]
+//    }
+//
+//    override fun getCount(): Int {
+//        return fragments.size
+//    }
+//
+//}

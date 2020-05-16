@@ -53,7 +53,6 @@ object LatteConfigurator {
         Component.init(
             BuildConfig.DEBUG,
             Config.with(getConfigurator(LatteConfigKeys.APP_CONTEXT))
-                .defaultScheme("router")
                 // 使用内置的路由重复检查的拦截器, 如果为 true,
                 // 那么当两个相同的路由发生在指定的时间内后一个路由就会被拦截
                 .useRouteRepeatCheckInterceptor(true)
@@ -67,13 +66,13 @@ object LatteConfigurator {
                 .optimizeInit(true)
                 // 自动加载所有模块, 打开此开关后下面无需手动注册了
                 // 但是这个依赖 optimizeInit(true) 才会生效
-                .autoRegisterModule(true) // 1.7.9+
+                .autoRegisterModule(true)
                 .build()
         )
         // 如果你依赖了 rx 版本,需要配置这句代码,否则删除这句
         // RxErrorIgnoreUtil.ignoreError();
         // 注册其他业务模块,注册的字符串是上面各个业务模块配置在 build.gradle 中的 HOST
-        ModuleManager.getInstance().registerArr("app","main","core","moduleHome", "moduleSort", "moduleDiscover", "moduleUser");
+        ModuleManager.getInstance().registerArr("app","main","moduleHome","moduleDiscover","moduleSort","moduleUser");
         // 自动加载所有模块, 此功能需要打开开关 optimizeInit(true).
         // 如果你同时也打开了开关 autoRegisterModule(true), 那么这句代码也可省略了, 因为初始化的时候自动帮你注册了
         // ModuleManager.getInstance().autoRegister(); // 1.7.9+

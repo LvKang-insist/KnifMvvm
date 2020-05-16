@@ -2,6 +2,8 @@ package com.lv.module_main.activity
 
 import android.graphics.Color
 import androidx.fragment.app.Fragment
+import com.elvishew.xlog.XLog
+import com.lv.library_core.base.frag.BaseFragment
 import com.lv.library_core.model.MainViewModel
 import com.lv.module_main.R
 import com.lv.module_main.activity.base.BaseMainTabItemActivity
@@ -22,19 +24,20 @@ import com.xiaojinzi.component.impl.Router
 class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewModel>() {
 
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {
-        val home = Router.with("homeFragment").navigate()!!
-        val sort = Router.with("sort-fragment").navigate()!!
+        val home = Router.with("HomeFragment").navigate()!! as BaseFragment
+        val sort = Router.with("sort-fragment").navigate()!! as BaseFragment
         val discover = Router.with("discover-fragment").navigate()!!
         val user = Router.with("user-fragment").navigate()!!
+
         builder.addItem(
             BottomTabBean(R.drawable.icon_home_false, R.drawable.icon_home_true, "首页"),
             home
         )
         builder.addItem(
-            BottomTabBean(R.drawable.icon_mdd_false, R.drawable.icon_mdd_true, "目的地"), sort
+            BottomTabBean(R.drawable.icon_mdd_false, R.drawable.icon_mdd_true, "分类"), sort
         )
         builder.addItem(
-            BottomTabBean(R.drawable.icon_service_false, R.drawable.icon_service_true, "服务"),
+            BottomTabBean(R.drawable.icon_service_false, R.drawable.icon_service_true, "发现"),
             discover
         )
         builder.addItem(
@@ -48,13 +51,10 @@ class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewMode
     }
 
     override fun setSelectColor(): Int {
-        return Color.RED
+        return Color.BLACK
     }
 
-
-    override fun layout(): Int {
-        return R.layout.bottom_activity
-    }
+    override fun isScroll(): Boolean = true
 
     override fun setViewModel(): Class<MainViewModel> = MainViewModel::class.java
 
