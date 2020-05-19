@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.frag.BaseFragment
+import com.lv.module_home.test.TestActivity
 import com.xiaojinzi.component.anno.FragmentAnno
+import kotlinx.android.synthetic.main.home_frag.*
 
 /**
  * @name HomeFragment
@@ -26,7 +28,9 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun bindView(rootView: View) {
-
+        home.setOnClickListener {
+            startActivity(TestActivity::class.java)
+        }
     }
 
 }

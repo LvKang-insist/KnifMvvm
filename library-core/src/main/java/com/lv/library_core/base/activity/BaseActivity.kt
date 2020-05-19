@@ -40,13 +40,14 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
         }
     }
 
+    abstract fun setViewModel(): Class<VM>
+
     abstract fun layout(): Int
 
     abstract fun bindView()
 
     open fun bindView(savedInstanceState: Bundle?) {}
 
-    abstract fun setViewModel(): Class<VM>
 
 
 }

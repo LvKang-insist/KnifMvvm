@@ -1,5 +1,6 @@
 package com.lv.library_core.base.frag
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,10 @@ abstract class BaseFragment : Fragment() {
             isLazyLoad = true
             lazyLoad()
         }
+    }
+
+    fun <T> startActivity(clazz: Class<T>) {
+        context?.startActivity(Intent(context, clazz))
     }
 
     /**

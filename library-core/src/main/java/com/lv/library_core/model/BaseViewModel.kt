@@ -17,7 +17,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 可在请求完成后调用，用于提示
      */
-    private val finally by lazy { MutableLiveData<String>() }
+    protected val finally by lazy { MutableLiveData<String>() }
 
 
     fun getFinally(): LiveData<String> {
