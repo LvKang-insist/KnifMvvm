@@ -2,15 +2,13 @@ package com.lv.module_main.activity
 
 import android.graphics.Color
 import androidx.fragment.app.Fragment
-import com.elvishew.xlog.XLog
-import com.lv.library_core.base.frag.BaseFragment
-import com.lv.library_core.model.MainViewModel
+import com.lv.library_core.base.ui.frag.BaseFragment
+import com.lv.library_core.base.viewmodel.MainViewModel
 import com.lv.module_main.R
 import com.lv.module_main.activity.base.BaseMainTabItemActivity
 import com.lv.module_main.activity.bottom.BottomTabBean
 import com.lv.module_main.activity.bottom.ItemBuilder
 import com.lv.module_main.databinding.BottomActivityBinding
-import com.lv.module_main.main.Frag
 import com.xiaojinzi.component.impl.Router
 
 /**
@@ -24,8 +22,8 @@ import com.xiaojinzi.component.impl.Router
 class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewModel>() {
 
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {
-        val home = Router.with("HomeFragment").navigate()!! as BaseFragment
-        val sort = Router.with("sort-fragment").navigate()!! as BaseFragment
+        val home = Router.with("HomeFragment").navigate()!!
+        val sort = Router.with("sort-fragment").navigate()!!
         val discover = Router.with("discover-fragment").navigate()!!
         val user = Router.with("user-fragment").navigate()!!
 
@@ -57,5 +55,6 @@ class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewMode
     override fun isScroll(): Boolean = true
 
     override fun setViewModel(): Class<MainViewModel> = MainViewModel::class.java
+
 
 }

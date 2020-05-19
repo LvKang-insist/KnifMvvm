@@ -4,10 +4,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStore
-import com.lv.library_core.base.activity.BaseLayoutActivity
+import com.hjq.toast.ToastUtils
+import com.lv.library_core.base.ui.activity.BaseBindingActivity
+import com.lv.library_core.base.ui.activity.BaseLayoutActivity
 import com.lv.module_home.R
+import com.lv.module_home.databinding.TextActivityBinding
+import kotlinx.android.synthetic.main.layout_toolbar.*
 
-class TestActivity : BaseLayoutActivity<TestViewModel>() {
+class TestActivity : BaseBindingActivity<TextActivityBinding, TestViewModel>() {
+
     override fun setViewModel(): Class<TestViewModel> = TestViewModel::class.java
 
     override fun layout(): Int {
@@ -15,7 +20,16 @@ class TestActivity : BaseLayoutActivity<TestViewModel>() {
     }
 
     override fun bindView() {
-        viewModel.request()
+
+        toolbar_title.setOnClickListener {
+            viewModel.request()
+        }
+
+        viewModel.testData.observe(this, Observer {
+            ToastUtils.show("${it.name}   ${it.age}")
+            binding.testBean = it
+        })
     }
+
 
 }

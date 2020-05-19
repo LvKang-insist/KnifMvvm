@@ -1,4 +1,4 @@
-package com.lv.library_core.base.single
+package com.lv.library_core.single
 
 import android.app.Application
 import android.os.Bundle

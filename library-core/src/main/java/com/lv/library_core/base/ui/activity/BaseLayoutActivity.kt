@@ -1,8 +1,8 @@
-package com.lv.library_core.base.activity
+package com.lv.library_core.base.ui.activity
 
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.lv.library_core.model.BaseViewModel
+import com.lv.library_core.base.viewmodel.BaseViewModel
 
 /**
  * @name BaseLayoutActivity

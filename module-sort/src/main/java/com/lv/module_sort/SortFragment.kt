@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.elvishew.xlog.XLog
-import com.lv.library_core.base.frag.BaseFragment
+import com.lv.library_core.base.ui.frag.BaseFragment
+import com.lv.library_core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 
 /**
@@ -18,7 +19,10 @@ import com.xiaojinzi.component.anno.FragmentAnno
  */
 
 @FragmentAnno("sort-fragment")
-class SortFragment : BaseFragment() {
+class SortFragment : BaseLayoutFragment<SortViewModel>() {
+
+    override fun setViewModel(): Class<SortViewModel>  = SortViewModel::class.java
+
     override fun layout(): Int {
         return R.layout.sort_frag
     }
@@ -26,6 +30,5 @@ class SortFragment : BaseFragment() {
     override fun bindView(rootView: View) {
 
     }
-
 
 }

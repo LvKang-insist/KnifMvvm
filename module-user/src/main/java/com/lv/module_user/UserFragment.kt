@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.hjq.toast.ToastUtils
+import com.lv.library_core.base.model.DefaultModel
+import com.lv.library_core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.user_frag.*
 
@@ -19,13 +21,20 @@ import kotlinx.android.synthetic.main.user_frag.*
  */
 
 @FragmentAnno("user-fragment")
-class UserFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.user_frag, container, false)
+class UserFragment : BaseLayoutFragment<UserViewModel>() {
+
+    override fun setViewModel(): Class<UserViewModel> = UserViewModel::class.java
+
+    override fun layout(): Int {
+        return R.layout.user_frag
+    }
+
+    override fun bindView(rootView: View) {
+
+    }
+
+    override fun bindView(view: View, savedInstanceState: Bundle?) {
+
     }
 
 }
