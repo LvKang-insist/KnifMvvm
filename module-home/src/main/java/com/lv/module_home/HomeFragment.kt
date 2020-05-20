@@ -1,20 +1,13 @@
 package com.lv.module_home
 
-import android.os.Bundle
-import android.view.LayoutInflater
+
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.elvishew.xlog.XLog
-import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseBindingFragment
-import com.lv.library_core.base.ui.frag.BaseFragment
-import com.lv.library_core.base.ui.frag.BaseLayoutFragment
 import com.lv.module_home.databinding.HomeFragBinding
 import com.lv.module_home.test.TestActivity
 import com.xiaojinzi.component.anno.FragmentAnno
-import kotlinx.android.synthetic.main.home_frag.*
 
 /**
  * @name HomeFragment
@@ -34,6 +27,20 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
     }
 
     override fun bindView(rootView: View) {
+
+        val map = mutableMapOf<String, String>()
+        XLog.e(map.isNotEmpty())
+        map.put("111", "222")
+        XLog.e(map.isNotEmpty())
+
+        binding.request.setOnClickListener {
+            viewModel
+                .getDefaultRequest("https://www.baidu.com")
+                .observe(this, Observer {
+                    binding.data = it
+                })
+        }
+
         binding.home.setOnClickListener {
             startActivity(TestActivity::class.java)
         }

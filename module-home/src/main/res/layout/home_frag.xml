@@ -3,12 +3,16 @@
 
     <data>
 
+        <variable
+            name="data"
+            type="com.www.net.Result" />
+
     </data>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#999999"
+        android:background="@color/background"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -21,5 +25,15 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:text="@{data==null?`点击获取数据`:data.value}"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

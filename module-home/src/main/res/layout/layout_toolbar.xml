@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="@color/white">
+    android:background="@color/toolbar_background">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="50dp"
@@ -18,8 +18,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:text="我是标题"
-        android:textSize="18sp"
-        android:textColor="#000000" />
+        android:textColor="@color/toolbar_tv_color"
+        android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="50dp"

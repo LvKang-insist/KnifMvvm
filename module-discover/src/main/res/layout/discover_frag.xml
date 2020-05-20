@@ -5,10 +5,10 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#999999"
+        android:background="@color/background"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -20,5 +20,5 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
