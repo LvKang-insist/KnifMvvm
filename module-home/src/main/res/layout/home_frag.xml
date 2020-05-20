@@ -12,10 +12,18 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <com.tencent.rtmp.ui.TXCloudVideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:visibility="visible"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:layout_gravity="center"
             android:text="Home"
             android:textColor="@color/black"

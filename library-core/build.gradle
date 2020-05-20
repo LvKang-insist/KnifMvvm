@@ -22,6 +22,20 @@ android {
         }
     }
 
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    packagingOptions {
+        pickFirst '**/libc++_shared.so'
+        doNotStrip "*/armeabi/libYTCommon.so"
+        doNotStrip "*/armeabi-v7a/libYTCommon.so"
+        doNotStrip "*/x86/libYTCommon.so"
+        doNotStrip "*/arm64-v8a/libYTCommon.so"
+    }
+
     dataBinding {
         enabled true
     }
@@ -59,4 +73,7 @@ dependencies {
 
     //网络请求库
     api 'com.github.LvKang-insist:LvHttp:1.1.0'
+
+    //腾讯云 Sdk 集成
+    api 'com.tencent.liteavsdk:LiteAVSDK_Smart:latest.release'
 }

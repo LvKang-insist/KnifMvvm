@@ -1,20 +1,12 @@
 package com.lv.module_home
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.Fragment
-import com.elvishew.xlog.XLog
-import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseBindingFragment
-import com.lv.library_core.base.ui.frag.BaseFragment
-import com.lv.library_core.base.ui.frag.BaseLayoutFragment
 import com.lv.module_home.databinding.HomeFragBinding
-import com.lv.module_home.test.TestActivity
+import com.tencent.rtmp.TXLivePlayer
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.home_frag.*
+
 
 /**
  * @name HomeFragment
@@ -34,9 +26,15 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
     }
 
     override fun bindView(rootView: View) {
+        val txLivePlayer = TXLivePlayer(context)
+        txLivePlayer.setPlayerView(video_view)
         binding.home.setOnClickListener {
-            startActivity(TestActivity::class.java)
+//            startActivity(TestActivity::class.java)
+            val flvUrl = "http://2157.liveplay.myqcloud.com/live/2157_xxxx.flv"
+            txLivePlayer.startPlay(flvUrl, TXLivePlayer.PLAY_TYPE_LIVE_FLV) //推荐 FLV
         }
+
+
     }
 
 }
