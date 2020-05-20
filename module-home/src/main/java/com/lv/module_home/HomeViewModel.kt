@@ -1,5 +1,7 @@
 package com.lv.module_home
 
+import com.lv.library_core.base.model.BaseModel
+import com.lv.library_core.base.model.DefaultModel
 import com.lv.library_core.base.viewmodel.BaseViewModel
 
 /**
@@ -12,4 +14,8 @@ import com.lv.library_core.base.viewmodel.BaseViewModel
 
 class HomeViewModel : BaseViewModel() {
 
+
+    override fun setModel(): BaseModel? {
+        return DefaultModel()
+    }
 }
