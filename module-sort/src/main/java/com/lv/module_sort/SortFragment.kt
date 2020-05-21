@@ -28,21 +28,8 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun bindView(rootView: View) {
 
-        val txLivePushConfig = TXLivePushConfig()
-        val txLivePusher = TXLivePusher(context)
 
-        txLivePusher.config = txLivePushConfig
 
-        txLivePusher.startCameraPreview(pusher_tx_cloud_view)
-
-        sort.setOnClickListener {
-            val rtmpURL = "rtmp://98744.livepush.myqcloud.com/live/345?txSecret=d4383d2ccdab920a309d608f4f886a49&txTime=5EC6A57F" //此处填写您的 rtmp 推流地址
-
-            val ret: Int = txLivePusher.startPusher(rtmpURL.trim { it <= ' ' })
-            if (ret == -5) {
-                ToastUtils.show("startRTMPPush: license 校验失败")
-            }
-        }
         //关闭时调用
 //        txLivePusher.stopPusher();
 //        txLivePusher.stopCameraPreview(true); //如果已经启动了摄像头预览，请在结束推流时将其关闭。

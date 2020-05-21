@@ -1,5 +1,6 @@
 package com.lv.library_core.base.ui.frag
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.viewmodel.BaseViewModel
+import com.permissionx.guolindev.PermissionX
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
@@ -46,6 +49,18 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     fun <T> startActivity(clazz: Class<T>) {
         context?.startActivity(Intent(context, clazz))
+    }
+
+    fun permission(block: () -> Unit,  permission: String) {
+        PermissionX.init(activity!!)
+            .permissions(permission)
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                    block()
+                } else {
+                    ToastUtils.show("权限获取失败")
+                }
+            }
     }
 
     /**

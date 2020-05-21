@@ -75,5 +75,7 @@ dependencies {
     api 'com.github.LvKang-insist:LvHttp:1.1.0'
 
     //腾讯云 Sdk 集成
-    api 'com.tencent.liteavsdk:LiteAVSDK_Smart:latest.release'
+    api 'com.tencent.liteavsdk:LiteAVSDK_Smart:7.2.8927'
+
+    api 'com.permissionx.guolindev:permissionx:1.1.1'
 }

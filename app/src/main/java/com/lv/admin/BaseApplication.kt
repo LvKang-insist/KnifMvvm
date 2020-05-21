@@ -22,9 +22,9 @@ class BaseApplication : Application() {
             .withComponent()
             .configure()
 
-        val licenceURL = "http://download-1252463788.cossh.myqcloud.com/xiaoshipin/licence_android/RDM_Enterprise.license" // 获取到的 licence url
+        val licenceURL = "http://license.vod2.myqcloud.com/license/v1/b6e51dd3896f420cc0481a88f0aea56e/TXLiveSDK.licence" // 获取到的 licence url
 
-        val licenceKey = "9bc74ac7bfd07ea392e8fdff2ba5678a" // 获取到的 licence key
+        val licenceKey = "33871031779fa85fa83cb4dc3ade633d" // 获取到的 licence key
 
         TXLiveBase.getInstance().setLicence(this, licenceURL, licenceKey)
     }
