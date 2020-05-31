@@ -1,6 +1,7 @@
 package com.lv.module_home.test
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelStore
@@ -22,12 +23,11 @@ class TestActivity : BaseBindingActivity<TextActivityBinding, TestViewModel>() {
     override fun bindView() {
 
         toolbar_title.setOnClickListener {
-            viewModel.request()
+            viewModel.requestBaiDu()
         }
 
-        viewModel.testData.observe(this, Observer {
-            ToastUtils.show("${it.name}   ${it.age}")
-            binding.testBean = it
+        viewModel.testLiveData.observe(this, Observer {
+            ToastUtils.show(if (!TextUtils.isEmpty(it)) it else "请求错误")
         })
     }
 

@@ -1,12 +1,8 @@
 package com.lv.library_core.base.viewmodel
 
 import androidx.lifecycle.*
-import com.lv.library_core.base.model.BaseModel
+import com.lv.library_core.base.model.BaseRepository
 import com.www.net.Result
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 /**
  * @name BaseViewModel
@@ -18,10 +14,10 @@ import kotlinx.coroutines.launch
 @Suppress("UNCHECKED_CAST")
 abstract class BaseViewModel : ViewModel(), LifecycleObserver {
 
-    //BaseModel
-    private var mModel: BaseModel? = null
+    //Repository
+    private var mDefaultRepository: BaseRepository? = null
         get() {
-            if (field == null) field = setModel()
+            if (field == null) field = object : BaseRepository() {}
             return field
         }
 
@@ -29,7 +25,8 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     protected val finally by lazy { MutableLiveData<String>() }
 
     //默认的 liveData
-    protected val defaultRequest by lazy { MutableLiveData<Result>() }
+    private val liveData by lazy { MutableLiveData<Result>() }
+    val defaultLiveData: LiveData<Result> by lazy { liveData }
 
     /**
      * 可在数据处理完成时调用，用于弹出一些提示
@@ -41,35 +38,21 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver {
     /**
      * 默认的网络请求
      */
-    fun getDefaultRequest(url: String): LiveData<Result> {
-        mModel?.request(url) {
-            defaultRequest.value = it
+    fun getDefaultRequest(url: String) {
+        mDefaultRepository?.request(url) {
+            liveData.value = it
         }
-        return defaultRequest
     }
 
-    fun getDefaultRequest(url: String, params: MutableMap<String, Any>): LiveData<Result> {
-        mModel?.request(url, params) {
-            defaultRequest.value = it
+    fun getDefaultRequest(url: String, params: MutableMap<String, Any>) {
+        mDefaultRepository?.request(url, params) {
+            liveData.value = it
         }
-        return defaultRequest
     }
 
-
-    /**
-     * 设置 Model
-     */
-    open fun setModel(): BaseModel? = null
-
-    /**
-     * 获取 Model
-     */
-    fun <M : BaseModel> getModel(): M? {
-        return mModel as M
-    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        mModel = null
+        mDefaultRepository = null
     }
 }

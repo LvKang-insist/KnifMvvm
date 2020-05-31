@@ -1,8 +1,5 @@
 package com.lv.library_core.base.viewmodel
 
-import com.lv.library_core.base.model.DefaultModel
-import com.lv.library_core.base.viewmodel.BaseViewModel
-
 /**
  * @name MainViewModel
  * @package com.lv.module_main.activity

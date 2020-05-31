@@ -7,5 +7,5 @@ package com.lv.library_core.base.model
  * @time 2020/5/19 23:32
  * @description
  */
-class DefaultModel : BaseModel() {
+class DefaultRepository : BaseRepository() {
 }

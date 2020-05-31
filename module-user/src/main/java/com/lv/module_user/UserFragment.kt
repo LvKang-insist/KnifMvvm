@@ -1,14 +1,6 @@
 package com.lv.module_user
 
-import android.content.Intent
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.fragment.app.Fragment
-import com.hjq.toast.ToastUtils
-import com.lv.library_core.base.model.DefaultModel
 import com.lv.library_core.base.ui.activity.skin.SkinManager
 import com.lv.library_core.base.ui.activity.skin.config.SkinPreUtils
 import com.lv.library_core.base.ui.frag.BaseLayoutFragment

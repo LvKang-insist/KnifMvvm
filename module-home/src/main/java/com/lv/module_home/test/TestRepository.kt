@@ -1,7 +1,8 @@
 package com.lv.module_home.test
 
 import com.elvishew.xlog.XLog
-import com.lv.library_core.base.model.BaseModel
+import com.lv.library_core.base.model.BaseRepository
+import com.www.net.LvHttp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -15,17 +16,13 @@ import kotlinx.coroutines.launch
  * @description
  */
 
-class TestModel : BaseModel() {
+class TestRepository : BaseRepository() {
 
 
-    fun request(block: (TestBean) -> Unit) {
-        GlobalScope.launch {
-            delay(5000)
-            launch(Dispatchers.Main) {
-                XLog.e("----------------")
-                block(TestBean("345", 21))
-            }
-        }
+    fun request(): String? {
+        return LvHttp.post()
+            .addUrl("https://www.baidu.com")
+            .send()?.value
     }
 
 }

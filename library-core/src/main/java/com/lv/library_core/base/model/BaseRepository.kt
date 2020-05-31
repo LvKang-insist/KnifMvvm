@@ -6,13 +6,13 @@ import com.www.net.LvHttp
 import com.www.net.Result
 
 /**
- * @name BaseModel
+ * @name BaseRepository
  * @package com.lv.library_core.base.model
  * @author 345 QQ:1831712732
  * @time 2020/5/19 21:52
- * @description
+ * @description 基础的数据类
  */
-abstract class BaseModel {
+abstract class BaseRepository {
 
     /**
      * 普通的网络请求

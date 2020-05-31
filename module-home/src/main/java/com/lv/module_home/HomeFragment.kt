@@ -32,7 +32,6 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
             startActivity(TestActivity::class.java)
         }
 
-
     }
 
 }

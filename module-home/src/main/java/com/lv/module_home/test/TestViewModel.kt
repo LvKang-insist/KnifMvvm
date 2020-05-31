@@ -1,25 +1,19 @@
 package com.lv.module_home.test
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.lv.library_core.base.model.BaseModel
-import com.lv.library_core.base.model.DefaultModel
 import com.lv.library_core.base.viewmodel.BaseViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class TestViewModel : BaseViewModel() {
 
-    val testData by lazy { MutableLiveData<TestBean>() }
+    private val testRepository by lazy { TestRepository() }
 
-    fun request() {
-        getModel<TestModel>()?.request {
-            testData.value = it
-        }
-    }
+    private val liveData by lazy { MutableLiveData<String>() }
 
-    override fun setModel(): TestModel {
-        return TestModel()
+    val testLiveData: LiveData<String> by lazy { liveData }
+
+    fun requestBaiDu() {
+        liveData.postValue(testRepository.request())
     }
 
 
