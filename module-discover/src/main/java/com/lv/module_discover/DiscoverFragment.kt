@@ -37,7 +37,7 @@ class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding, DiscoverViewMo
     override fun bindView(rootView: View) {
         val mLivePushConfig = TXLivePushConfig()
 
-        val bitmap = BitmapFactory.decodeResource(resources, R.drawable.image)
+       /* val bitmap = BitmapFactory.decodeResource(resources, R.drawable.image)
 
         mLivePushConfig.setPauseImg(bitmap)
         val mLivePusher = TXLivePusher(context)
@@ -80,7 +80,7 @@ class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding, DiscoverViewMo
         stop_video.setOnClickListener {
             // 暂停
             mLivePlayer.pause();
-        }
+        }*/
     }
 
 

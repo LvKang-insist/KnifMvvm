@@ -20,7 +20,7 @@ class TestRepository : BaseRepository() {
 
 
     fun request(): String? {
-        return LvHttp.post()
+        return LvHttp.get()
             .addUrl("https://www.baidu.com")
             .send()?.value
     }

@@ -20,7 +20,8 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider.NewInstanceFactory().create(setViewModel())
+        viewModel = ViewModelProvider(this).get(setViewModel())
+
         lifecycle.addObserver(viewModel)
         initView()
         bindView(savedInstanceState)

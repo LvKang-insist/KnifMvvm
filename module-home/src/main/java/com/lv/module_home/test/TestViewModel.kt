@@ -2,9 +2,15 @@ package com.lv.module_home.test
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.lv.library_core.base.viewmodel.BaseViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class TestViewModel : BaseViewModel() {
+class TestViewModel : BaseViewModel {
+
+
 
     private val testRepository by lazy { TestRepository() }
 
@@ -12,8 +18,13 @@ class TestViewModel : BaseViewModel() {
 
     val testLiveData: LiveData<String> by lazy { liveData }
 
+    constructor() : super()
+    constructor(state: SavedStateHandle) : super(state)
+
     fun requestBaiDu() {
-        liveData.postValue(testRepository.request())
+        GlobalScope.launch {
+            liveData.postValue(testRepository.request())
+        }
     }
 
 

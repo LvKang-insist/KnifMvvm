@@ -1,6 +1,9 @@
 package com.lv.module_home
 
+import android.content.Intent
 import android.view.View
+import androidx.lifecycle.Observer
+import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseBindingFragment
 import com.lv.module_home.databinding.HomeFragBinding
 import com.lv.module_home.test.TestActivity
@@ -22,16 +25,23 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun setViewModel(): Class<HomeViewModel> = HomeViewModel::class.java
 
+
     override fun layout(): Int {
         return R.layout.home_frag
     }
 
     override fun bindView(rootView: View) {
-
-        binding.home.setOnClickListener {
-            startActivity(TestActivity::class.java)
+        home.setOnClickListener {
+            startActivity(Intent(context, TestActivity::class.java))
         }
 
+        request.setOnClickListener {
+            viewModel.getDefaultRequest("https://www.wanandroid.com")
+        }
+
+        viewModel.defaultLiveData.observe(this, Observer {
+            ToastUtils.show(it.value)
+        })
     }
 
 }
