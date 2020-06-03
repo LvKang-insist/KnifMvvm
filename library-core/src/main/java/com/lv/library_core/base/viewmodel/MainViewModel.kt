@@ -1,5 +1,7 @@
 package com.lv.library_core.base.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
+
 /**
  * @name MainViewModel
  * @package com.lv.module_main.activity
@@ -8,6 +10,7 @@ package com.lv.library_core.base.viewmodel
  * @description
  */
 
-class MainViewModel : BaseViewModel() {
-
+class MainViewModel : BaseViewModel{
+    constructor() : super()
+    constructor(state: SavedStateHandle) : super(state)
 }

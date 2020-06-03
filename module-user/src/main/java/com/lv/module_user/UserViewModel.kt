@@ -1,5 +1,6 @@
 package com.lv.module_user
 
+import androidx.lifecycle.SavedStateHandle
 import com.lv.library_core.base.viewmodel.BaseViewModel
 
 /**
@@ -9,5 +10,7 @@ import com.lv.library_core.base.viewmodel.BaseViewModel
  * @time 2020/5/19 23:10
  * @description
  */
-class UserViewModel : BaseViewModel() {
+class UserViewModel : BaseViewModel {
+    constructor() : super()
+    constructor(state: SavedStateHandle) : super(state)
 }

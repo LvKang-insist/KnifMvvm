@@ -1,5 +1,6 @@
 package com.lv.module_home
 
+import androidx.lifecycle.SavedStateHandle
 import com.lv.library_core.base.model.BaseRepository
 import com.lv.library_core.base.model.DefaultRepository
 import com.lv.library_core.base.viewmodel.BaseViewModel
@@ -12,8 +13,8 @@ import com.lv.library_core.base.viewmodel.BaseViewModel
  * @description
  */
 
-class HomeViewModel : BaseViewModel() {
-
-
-
+class HomeViewModel : BaseViewModel {
+//
+    constructor() : super()
+    constructor(state: SavedStateHandle) : super(state)
 }

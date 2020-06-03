@@ -3,6 +3,7 @@ package com.lv.library_core.base.ui.activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.lv.library_core.base.viewmodel.BaseViewModel
 
@@ -20,8 +21,10 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(setViewModel())
-
+        viewModel = ViewModelProvider(
+            this,
+            SavedStateViewModelFactory(application, this)
+        ).get(setViewModel())
         lifecycle.addObserver(viewModel)
         initView()
         bindView(savedInstanceState)

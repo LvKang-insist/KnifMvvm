@@ -30,14 +30,23 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
         return R.layout.home_frag
     }
 
+    class Home() {
+
+    }
+
     override fun bindView(rootView: View) {
         home.setOnClickListener {
             startActivity(Intent(context, TestActivity::class.java))
         }
 
         request.setOnClickListener {
-            viewModel.getDefaultRequest("https://www.wanandroid.com")
+//            viewModel.getDefaultRequest("https://www.wanandroid.com")
+            viewModel.saveCurrentValue("345", 1321)
+            viewModel.saveCurrentValue("456", Home())
         }
+        viewModel.getSaveStateLiveData<Home>("456").observe(this, Observer {
+            ToastUtils.show(it)
+        })
 
         viewModel.defaultLiveData.observe(this, Observer {
             ToastUtils.show(it.value)

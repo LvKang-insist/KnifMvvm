@@ -32,6 +32,7 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
 
     constructor(state: SavedStateHandle) : super() {
         this.savedStateHandler = state
+        ToastUtils.show("哈哈")
     }
 
     //Repository
@@ -68,7 +69,6 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
      */
     fun <T> saveCurrentValue(key: String, t: T) {
         savedStateHandler.set(key, t)
-        ToastUtils.show("保存成功")
     }
 
     /**

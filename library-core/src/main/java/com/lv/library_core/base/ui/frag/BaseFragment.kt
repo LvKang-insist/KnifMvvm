@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.viewmodel.BaseViewModel
@@ -26,7 +27,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider.NewInstanceFactory().create(setViewModel())
+        viewModel = ViewModelProvider(
+            this,
+            SavedStateViewModelFactory(activity!!.application, this)
+        ).get(setViewModel())
         lifecycle.addObserver(viewModel)
         return initView(container)
     }
@@ -51,7 +55,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         context?.startActivity(Intent(context, clazz))
     }
 
-    fun permission(block: () -> Unit,  permission: String) {
+    fun permission(block: () -> Unit, permission: String) {
         PermissionX.init(activity!!)
             .permissions(permission)
             .request { allGranted, grantedList, deniedList ->
