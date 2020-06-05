@@ -1,18 +1,17 @@
 package com.lv.library_core.base.ui.frag
 
-import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.viewmodel.BaseViewModel
 import com.permissionx.guolindev.PermissionX
+import java.lang.NullPointerException
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
@@ -27,10 +26,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(
-            this,
-            SavedStateViewModelFactory(activity!!.application, this)
-        ).get(setViewModel())
+        viewModel = setViewModel()
         lifecycle.addObserver(viewModel)
         return initView(container)
     }
@@ -58,7 +54,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     fun permission(block: () -> Unit, permission: String) {
         PermissionX.init(activity!!)
             .permissions(permission)
-            .request { allGranted, grantedList, deniedList ->
+            .request { allGranted, _, _ ->
                 if (allGranted) {
                     block()
                 } else {
@@ -67,10 +63,29 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             }
     }
 
+    private fun setViewModel(): VM {
+        val viewModel = createViewModel()
+        return if (viewModel != null) {
+            ViewModelProvider(this).get(viewModel)
+        } else {
+            val stateViewModel =
+                createStateViewModel() ?: throw NullPointerException("$this ---> ViewModel 为 null")
+            ViewModelProvider(
+                this,
+                SavedStateViewModelFactory(activity!!.application, this)
+            ).get(stateViewModel)
+        }
+    }
+
     /**
      * 设置 ViewModel
      */
-    abstract fun setViewModel(): Class<VM>
+    open fun createViewModel(): Class<VM>? = null
+
+    /**
+     * 带数据恢复的 ViewModel，可通过 savedStateHandler 进行设置
+     */
+    open fun createStateViewModel(): Class<VM>? = null
 
     /**
      * 加载布局

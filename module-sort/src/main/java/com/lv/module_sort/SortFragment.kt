@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.sort_frag.*
 @FragmentAnno("sort-fragment")
 class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
-    override fun setViewModel(): Class<SortViewModel> = SortViewModel::class.java
+    override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
 
     override fun layout(): Int {
         return R.layout.sort_frag

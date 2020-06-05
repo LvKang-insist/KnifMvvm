@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.user_frag.*
 @FragmentAnno("user-fragment")
 class UserFragment : BaseLayoutFragment<UserViewModel>() {
 
-    override fun setViewModel(): Class<UserViewModel> = UserViewModel::class.java
+    override fun createViewModel(): Class<UserViewModel> = UserViewModel::class.java
 
     override fun layout(): Int {
         return R.layout.user_frag

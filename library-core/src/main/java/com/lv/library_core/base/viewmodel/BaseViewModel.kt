@@ -17,6 +17,7 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
 
     /**
      * ViewModel 在内存不足时被干掉后的数据恢复
+     * 包括在页面转屏的时候都会通知对应的观察者
      */
     private lateinit var savedStateHandler: SavedStateHandle
 
@@ -32,7 +33,6 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
 
     constructor(state: SavedStateHandle) : super() {
         this.savedStateHandler = state
-        ToastUtils.show("哈哈")
     }
 
     //Repository

@@ -23,16 +23,13 @@ import kotlinx.android.synthetic.main.home_frag.*
 @FragmentAnno("HomeFragment")
 class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
-    override fun setViewModel(): Class<HomeViewModel> = HomeViewModel::class.java
 
+    override fun createViewModel(): Class<HomeViewModel>? = HomeViewModel::class.java
 
     override fun layout(): Int {
         return R.layout.home_frag
     }
 
-    class Home() {
-
-    }
 
     override fun bindView(rootView: View) {
         home.setOnClickListener {
@@ -40,15 +37,9 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
         }
 
         request.setOnClickListener {
-//            viewModel.getDefaultRequest("https://www.wanandroid.com")
-            viewModel.saveCurrentValue("345", 1321)
-            viewModel.saveCurrentValue("456", Home())
+            viewModel.login()
         }
-        viewModel.getSaveStateLiveData<Home>("456").observe(this, Observer {
-            ToastUtils.show(it)
-        })
-
-        viewModel.defaultLiveData.observe(this, Observer {
+        viewModel.loginLiveData.observe(this, Observer {
             ToastUtils.show(it.value)
         })
     }

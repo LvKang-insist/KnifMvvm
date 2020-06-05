@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.discover_frag.*
 @FragmentAnno("discover-fragment")
 class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding, DiscoverViewModel>() {
 
-    override fun setViewModel(): Class<DiscoverViewModel> = DiscoverViewModel::class.java
+    override fun createViewModel(): Class<DiscoverViewModel> = DiscoverViewModel::class.java
 
     override fun layout(): Int {
         return R.layout.discover_frag
