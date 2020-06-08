@@ -85,4 +85,11 @@ dependencies {
 
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-alpha03"
 
+    //数据库组件
+    api "android.arch.persistence.room:runtime:2.2.3"
+    api "androidx.room:room-ktx:2.2.5"
+    kapt "android.arch.persistence.room:compiler:2.2.3"
+
+    //paging分页组件
+    api 'androidx.paging:paging-runtime:2.1.2'
 }

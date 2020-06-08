@@ -67,4 +67,7 @@ dependencies {
     implementation project(path: ':module-home')
     implementation project(path: ':module-sort')
     implementation project(path: ':module-user')
+
+    kapt "android.arch.persistence.room:compiler:2.2.3"
+
 }

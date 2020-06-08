@@ -1,9 +1,10 @@
 package com.lv.module_sort
 
 import android.view.View
-import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseLayoutFragment
-import com.tencent.rtmp.TXLivePushConfig
+import com.lv.library_core.utils.storage.CacheDataBase
+import com.lv.module_sort.dao.SortDataBase
+import com.lv.module_sort.dao.UserDao
 import com.tencent.rtmp.TXLivePusher
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.sort_frag.*
@@ -28,12 +29,8 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun bindView(rootView: View) {
 
-
-
-        //关闭时调用
-//        txLivePusher.stopPusher();
-//        txLivePusher.stopCameraPreview(true); //如果已经启动了摄像头预览，请在结束推流时将其关闭。
-
+        val dao = SortDataBase.get().getDao<UserDao>()
+        dao.save(User(1, "234", 34))
     }
 
 

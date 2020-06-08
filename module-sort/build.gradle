@@ -16,6 +16,7 @@ android {
             annotationProcessorOptions {
                 // 配置业务模块的模块名称
                 arguments = ["HOST": "moduleSort"]
+
             }
         }
     }
@@ -33,5 +34,9 @@ android {
 
 dependencies {
     implementation project(path: ':library-core')
+    //小金子
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
+    //数据库
+    kapt "android.arch.persistence.room:compiler:2.2.3"
+
 }
