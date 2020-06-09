@@ -7,9 +7,13 @@
     android:orientation="vertical">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sort_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+   <androidx.appcompat.widget.AppCompatTextView
+       android:id="@+id/sort"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center"
+       android:text="sort"
+       android:textSize="25sp"
+       android:gravity="center"/>
 
 </LinearLayout>

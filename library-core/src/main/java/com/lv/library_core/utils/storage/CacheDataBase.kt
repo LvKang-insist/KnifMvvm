@@ -4,6 +4,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.lv.library_core.latte.Latte
+import com.lv.library_core.utils.storage.dao.user.User
+import com.lv.library_core.utils.storage.dao.user.UserDao
 
 /**
  * @name RoomDataBase
@@ -12,6 +14,7 @@ import com.lv.library_core.latte.Latte
  * @time 2020/6/8 21:45
  * @description
  */
+@Database(entities = [User::class], version = 1)
 abstract class CacheDataBase : RoomDatabase() {
 
     companion object {
@@ -47,5 +50,7 @@ abstract class CacheDataBase : RoomDatabase() {
 
     }
 
-    abstract fun <T> getDao(): T
+
+    abstract fun getUser():UserDao
+
 }

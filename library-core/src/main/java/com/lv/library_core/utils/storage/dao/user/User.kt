@@ -1,7 +1,14 @@
-package com.lv.module_sort
+package com.lv.library_core.utils.storage.dao.user
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+
+/**
+ * @name User
+ * @package com.lv.module_sort.dao
+ * @author 345 QQ:1831712732
+ * @time 2020/6/8 21:53
+ * @description
+ */
 
 /**
  * @name User

@@ -1,11 +1,11 @@
 package com.lv.module_sort
 
 import android.view.View
+import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseLayoutFragment
 import com.lv.library_core.utils.storage.CacheDataBase
-import com.lv.module_sort.dao.SortDataBase
-import com.lv.module_sort.dao.UserDao
-import com.tencent.rtmp.TXLivePusher
+import com.lv.library_core.utils.storage.dao.user.User
+import com.lv.library_core.utils.storage.dao.user.UserDao
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.sort_frag.*
 
@@ -29,8 +29,11 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun bindView(rootView: View) {
 
-        val dao = SortDataBase.get().getDao<UserDao>()
-        dao.save(User(1, "234", 34))
+//        CacheDataBase.get().getUser().save(User(1, "345", 21))
+        /*sort.setOnClickListener {
+            val cache = CacheDataBase.get().getUser().getCache(1)
+            ToastUtils.show(cache.name)
+        }*/
     }
 
 
