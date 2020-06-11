@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -17,8 +18,8 @@ import com.lv.library_core.utils.storage.dao.user.User
  * @description
  */
 
-class RvAdapter(val list: List<User>) :
-    ListAdapter<User, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<User>() {
+class RvAdapter() :
+    PagedListAdapter<User, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem.name == newItem.name
 
         override fun areContentsTheSame(oldItem: User, newItem: User) = oldItem == newItem
@@ -39,7 +40,7 @@ class RvAdapter(val list: List<User>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val tv = holder.itemView.findViewById<AppCompatTextView>(R.id.sort_item_tv)
 
-        tv.text = "${list[position].name} -----${list[position].age}"
+        tv.text = " ${getItem(position)!!.id} ${getItem(position)!!.name} -----${getItem(position)!!.age}"
     }
 
 }

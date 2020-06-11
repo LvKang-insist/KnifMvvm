@@ -1,7 +1,8 @@
 package com.lv.library_core.utils.storage.dao.user
 
+import androidx.paging.DataSource
 import androidx.room.*
-import com.lv.library_core.utils.storage.dao.user.User
+
 
 /**
  * @name UserDao
@@ -16,8 +17,8 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(user: User): Long
 
-    @Query("select *from user where   `id`= :id")
-    fun getCache(id: Int): User
+    @Query("select *from user")
+    fun queryUser(): DataSource.Factory<Int, User>
 
     @Delete
     fun delete(user: User)
