@@ -1,10 +1,15 @@
 package com.lv.module_sort
 
 import android.view.View
+import android.widget.LinearLayout
+import androidx.constraintlayout.solver.Cache
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseLayoutFragment
-import com.tencent.rtmp.TXLivePushConfig
-import com.tencent.rtmp.TXLivePusher
+import com.lv.library_core.utils.storage.CacheDataBase
+import com.lv.library_core.utils.storage.dao.user.User
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.sort_frag.*
 
@@ -20,6 +25,7 @@ import kotlinx.android.synthetic.main.sort_frag.*
 @FragmentAnno("sort-fragment")
 class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
+
     override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
 
     override fun layout(): Int {
@@ -28,12 +34,19 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun bindView(rootView: View) {
 
-
-
-        //关闭时调用
-//        txLivePusher.stopPusher();
-//        txLivePusher.stopCameraPreview(true); //如果已经启动了摄像头预览，请在结束推流时将其关闭。
-
+        val adapter = RvAdapter()
+        recycler.layoutManager = LinearLayoutManager(context)
+        recycler.adapter = adapter
+        viewModel.users.observe(this, Observer {
+            adapter.submitList(it)
+        })
+//https://juejin.im/post/5db06bb6518825646d79070b#heading-23
+//         recycler.setOnClickListener {
+//             for (i in 0..40) {
+//                 val save = CacheDataBase.get().getUser().save(User(i, "LvKang", 26))
+//                 XLog.e(save)
+//             }
+//         }
     }
 
 
