@@ -1,4 +1,4 @@
-rootProject.name='KnifeMvvm_Kt'
+rootProject.name='KnifeMvvm'
 include ':app'
 include ':module-main'
 include ':module-home'

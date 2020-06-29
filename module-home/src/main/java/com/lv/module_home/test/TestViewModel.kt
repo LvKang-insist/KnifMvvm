@@ -24,9 +24,9 @@ class TestViewModel : BaseViewModel {
 
 
     fun requestBaiDu() {
-        GlobalScope.launch {
-            liveData.postValue(testRepository.request())
-        }
+//        GlobalScope.launch {
+//            liveData.postValue(testRepository.request())
+//        }
     }
 
 

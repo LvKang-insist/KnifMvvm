@@ -1,10 +1,8 @@
 package com.lv.module_home
 
 import com.lv.library_core.base.model.BaseRepository
+import com.lv.library_core.net.ApiServices
 import com.www.net.LvHttp
-import com.www.net.Result
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 /**
  * @name HomeRepository
@@ -15,10 +13,8 @@ import kotlinx.coroutines.withContext
  */
 class HomeRepository : BaseRepository() {
 
-    fun login(url: String): Result? {
-        return LvHttp.get()
-            .addUrl(url)
-            .send()
+    suspend fun login(): String {
+        return LvHttp.createApi(ApiServices::class.java).baidu()
     }
 
 }

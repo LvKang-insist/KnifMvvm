@@ -40,7 +40,8 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
             viewModel.login()
         }
         viewModel.loginLiveData.observe(this, Observer {
-            ToastUtils.show(it.value)
+            ToastUtils.show(it)
+            binding.data = it
         })
     }
 

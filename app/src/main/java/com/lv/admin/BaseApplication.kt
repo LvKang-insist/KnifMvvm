@@ -3,8 +3,6 @@ package com.lv.admin
 import android.app.Application
 import com.lv.library_core.latte.Latte
 import com.tencent.rtmp.TXLiveBase
-import com.www.net.LvCreator
-import com.www.net.LvHttp
 
 
 /**
@@ -22,9 +20,9 @@ class BaseApplication : Application() {
             .withLog()
             .withToastUtils()
             .withComponent()
+            .withLvHttp()
             .configure()
 
-        LvCreator.init("https://github.com/LvKang-insist/").log(true)
 
         val licenceURL =
             "http://license.vod2.myqcloud.com/license/v1/b6e51dd3896f420cc0481a88f0aea56e/TXLiveSDK.licence" // 获取到的 licence url

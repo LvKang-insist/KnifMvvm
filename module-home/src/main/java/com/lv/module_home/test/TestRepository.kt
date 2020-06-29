@@ -19,10 +19,6 @@ import kotlinx.coroutines.launch
 class TestRepository : BaseRepository() {
 
 
-    fun request(): String? {
-        return LvHttp.get()
-            .addUrl("https://www.baidu.com")
-            .send()?.value
-    }
+
 
 }

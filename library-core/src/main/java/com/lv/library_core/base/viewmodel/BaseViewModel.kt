@@ -3,7 +3,9 @@ package com.lv.library_core.base.viewmodel
 import androidx.lifecycle.*
 import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.model.BaseRepository
-import com.www.net.Result
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * @name BaseViewModel
@@ -24,9 +26,6 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
     //可在请求完成后调用，用于提示
     protected val finally by lazy { MutableLiveData<String>() }
 
-    //默认的 liveData
-    private val liveData by lazy { MutableLiveData<Result>() }
-    val defaultLiveData: LiveData<Result> by lazy { liveData }
 
 
     constructor() : super()
@@ -49,20 +48,7 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
         return finally
     }
 
-    /**
-     * 默认的网络请求
-     */
-    fun getDefaultRequest(url: String) {
-        mDefaultRepository?.request(url) {
-            liveData.value = it
-        }
-    }
 
-    fun getDefaultRequest(url: String, params: MutableMap<String, Any>) {
-        mDefaultRepository?.request(url, params) {
-            liveData.value = it
-        }
-    }
 
     /**
      * 保存数据到 savedStateHandler
@@ -84,6 +70,8 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
     fun <T> getSaveStateLiveData(key: String): LiveData<T> {
         return savedStateHandler.getLiveData(key)
     }
+
+
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

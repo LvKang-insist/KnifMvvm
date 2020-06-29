@@ -5,7 +5,7 @@
 
         <variable
             name="data"
-            type="com.www.net.Result" />
+            type="String" />
 
     </data>
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:text="@{data==null?`点击获取数据`:data.value}"
+            android:text="@{data==null?`点击获取数据`:data}"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
