@@ -1,17 +1,21 @@
-rootProject.name='KnifeMvvm'
+rootProject.name = 'KnifeMvvm'
 include ':app'
-include ':module-main'
-include ':module-home'
-
-//app module
-include ':module'
-include ':module:home'
 
 //library
-include ':library-core'
+include ':base-core'
+include ':module-main'
+include ':module-home'
 include ':module-sort'
 include ':module-discover'
 include ':module-user'
+
+//application
+include ':module'
+include ':module:home'
 include ':module:sort'
 include ':module:discover'
 include ':module:user'
+
+//standalone
+include 'standalone'
+include ':standalone:core'

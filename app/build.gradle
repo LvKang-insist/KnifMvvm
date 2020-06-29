@@ -54,13 +54,20 @@ android {
         doNotStrip "*/x86/libYTCommon.so"
         doNotStrip "*/arm64-v8a/libYTCommon.so"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(path: ':module-main')
-    implementation project(path: ':library-core')
+    implementation project(path: ':base-core')
 
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
     implementation project(path: ':module-discover')

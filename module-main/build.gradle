@@ -32,7 +32,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 kapt {
@@ -40,6 +42,6 @@ kapt {
 }
 
 dependencies {
-    implementation project(path: ':library-core')
+    implementation project(path: ':base-core')
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
 }

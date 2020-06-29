@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.sort_frag.*
  * @author 345 QQ:1831712732
  * @time 2020/5/12 21:51
  * @description
- */
+ */ 
 
 @FragmentAnno("sort-fragment")
 class SortFragment : BaseLayoutFragment<SortViewModel>() {
