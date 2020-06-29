@@ -2,7 +2,6 @@ package com.lv.admin
 
 import android.app.Application
 import com.lv.library_core.latte.Latte
-import com.tencent.rtmp.TXLiveBase
 
 
 /**
@@ -23,12 +22,5 @@ class BaseApplication : Application() {
             .withLvHttp()
             .configure()
 
-
-        val licenceURL =
-            "http://license.vod2.myqcloud.com/license/v1/b6e51dd3896f420cc0481a88f0aea56e/TXLiveSDK.licence" // 获取到的 licence url
-
-        val licenceKey = "33871031779fa85fa83cb4dc3ade633d" // 获取到的 licence key
-
-        TXLiveBase.getInstance().setLicence(this, licenceURL, licenceKey)
     }
 }

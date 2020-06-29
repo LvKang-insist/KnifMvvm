@@ -17,61 +17,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.tencent.rtmp.ui.TXCloudVideoView
-                android:id="@+id/pusher_tx_cloud_view"
-                android:layout_width="match_parent"
-                android:layout_height="400dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/start_pull"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="50dp"
-                    android:gravity="center"
-                    android:text="开启直播" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/stop_pull"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="100dp"
-                    android:gravity="center"
-                    android:text="关闭" />
-            </LinearLayout>
-
-
-            <com.tencent.rtmp.ui.TXCloudVideoView
-                android:id="@+id/video_view"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_centerInParent="true"
-                android:visibility="visible" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp">
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/start_video"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="50dp"
-                    android:gravity="center"
-                    android:text="开启播放" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/stop_video"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="100dp"
-                    android:gravity="center"
-                    android:text="暂停播放" />
-            </LinearLayout>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

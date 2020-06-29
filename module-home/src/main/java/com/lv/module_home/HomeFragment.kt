@@ -7,7 +7,6 @@ import com.hjq.toast.ToastUtils
 import com.lv.library_core.base.ui.frag.BaseBindingFragment
 import com.lv.module_home.databinding.HomeFragBinding
 import com.lv.module_home.test.TestActivity
-import com.tencent.rtmp.TXLivePlayer
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.home_frag.*
 
