@@ -6,9 +6,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.lv.module_home.R
 import com.standalone.core.base.ui.activity.BaseLayoutActivity
+import com.xiaojinzi.component.anno.RouterAnno
+import com.xiaojinzi.component.anno.router.RouterApiAnno
 import kotlinx.android.synthetic.main.home_navigation.*
 
 
+@RouterAnno(path = "home_navigation")
 class HomeNavigation : BaseLayoutActivity<TestViewModel>() {
 
     override fun setViewModel(): Class<TestViewModel> = TestViewModel::class.java

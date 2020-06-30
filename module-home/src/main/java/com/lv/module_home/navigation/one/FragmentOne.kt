@@ -11,16 +11,18 @@ import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import kotlinx.android.synthetic.main.frag_one.*
 
 class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
+
     override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java
+
     override fun layout(): Int {
         return R.layout.frag_one
     }
 
     override fun bindView(rootView: View) {
         one.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("name", "345")
-            Navigation.findNavController(rootView).navigate(R.id.fragmentTwo, bundle)
+//            val bundle = Bundle()
+//            bundle.putString("name", "345")
+            Navigation.findNavController(rootView).navigate(R.id.fragmentThree)
         }
     }
 

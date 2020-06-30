@@ -12,12 +12,12 @@ import android.app.Application
 object Latte {
 
     fun init(context: Application): LatteConfigurator {
-        getConfiguration()[LatteConfigKeys.APP_CONTEXT] = context.applicationContext
-        return getInstance()
+        LatteConfigurator.put(LatteConfigKeys.APP_CONTEXT, context)
+        return LatteConfigurator
     }
 
     /**
-     * @return 返回一个 全局Context
+     * @return 返回一个全局Context
      */
     fun getAppContext(): Application {
         return LatteConfigurator.getConfigurator(LatteConfigKeys.APP_CONTEXT)
@@ -25,17 +25,10 @@ object Latte {
 
 
     /**
-     * 获取一个 Value
+     * @return 一个 Value
      */
     fun <T> getValue(key: LatteConfigKeys): T {
         return LatteConfigurator.getConfigurator(key) as T
     }
 
-    private fun getConfiguration(): LinkedHashMap<LatteConfigKeys, Any> {
-        return LatteConfigurator.getLatteConfigs()
-    }
-
-    private fun getInstance(): LatteConfigurator {
-        return LatteConfigurator
-    }
 }

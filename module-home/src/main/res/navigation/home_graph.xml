@@ -12,8 +12,7 @@
         android:label="FragmentOne">
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
-            app:destination="@id/fragmentTwo"
-            app:enterAnim="@anim/nav_default_enter_anim" />
+            app:destination="@id/fragmentTwo" />
         <action
             android:id="@+id/action_fragmentOne_to_fragmentThree"
             app:destination="@id/fragmentThree" />
@@ -26,7 +25,6 @@
         android:id="@+id/fragmentThree"
         android:name="com.lv.module_home.navigation.three.FragmentThree"
         android:label="FragmentThree">
-        <deepLink
-            app:uri="home://www.google.com" />
+        <deepLink app:uri="home://www/frag3" />
     </fragment>
 </navigation>

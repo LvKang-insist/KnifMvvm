@@ -1,6 +1,7 @@
 package com.lv.admin
 
 import android.app.Application
+import android.util.Log
 import com.lv.library_core.net.ApiServices
 import com.standalone.core.latte.Latte
 
@@ -16,12 +17,5 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Latte.init(this)
-            .withLog()
-            .withToastUtils()
-            .withComponent()
-            .withLvHttp(ApiServices::class.java)
-            .configure()
-
     }
 }

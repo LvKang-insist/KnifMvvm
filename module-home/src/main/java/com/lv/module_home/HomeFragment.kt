@@ -36,9 +36,10 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun bindView(rootView: View) {
         home.setOnClickListener {
-            val intent = Intent(ACTION_VIEW)
-            intent.data = "home://www.google.com".toUri()
-            startActivity(intent)
+            /*  //深层链接，利用 uri 直接跳转到 FragmentThree 中
+              val intent = Intent(ACTION_VIEW)
+              intent.data = "home://www/frag3".toUri()*/
+            startActivity(Intent(context, HomeNavigation::class.java))
 //            Navigation.findNavController(rootView).navigate(Uri.parse("home://frag3"))
         }
 

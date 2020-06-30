@@ -10,9 +10,10 @@ package com.standalone.core.latte
 
 enum class LatteConfigKeys {
     /**
-     * Key
+     * Application
      */
     APP_CONTEXT,
+
     /**
      * 配置完成
      */

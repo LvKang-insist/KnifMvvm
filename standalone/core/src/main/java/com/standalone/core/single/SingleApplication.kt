@@ -7,8 +7,5 @@ class SingleApplication :Application(){
     override fun onCreate() {
         super.onCreate()
         Latte.init(this)
-            .withLog()
-            .withToastUtils()
-            .configure()
     }
 }

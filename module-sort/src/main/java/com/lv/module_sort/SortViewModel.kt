@@ -17,14 +17,14 @@ import com.standalone.core.storage.dao.user.User
 
 class SortViewModel : BaseViewModel() {
 
-    val users: LiveData<PagedList<User>>
+//    val users: LiveData<PagedList<User>>
 
     init {
         //创建 DataSource.Factory
-        val factory = CacheDataBase.get().getUser().queryUser()
+//        val factory = CacheDataBase.get().getUser().queryUser()
 
         //2,通过 LivePageListBuild 配置工厂和 pageSize，对 users 进行实例化
-        users = LivePagedListBuilder(factory, 15).build()
+//        users = LivePagedListBuilder(factory, 15).build()
     }
 
 }
