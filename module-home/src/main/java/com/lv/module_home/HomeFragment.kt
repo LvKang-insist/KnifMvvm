@@ -1,12 +1,16 @@
 package com.lv.module_home
 
 import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.view.View
+import androidx.core.net.toUri
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import com.hjq.toast.ToastUtils
-import com.lv.library_core.base.ui.frag.BaseBindingFragment
+import com.standalone.core.base.ui.frag.BaseBindingFragment
 import com.lv.module_home.databinding.HomeFragBinding
-import com.lv.module_home.test.TestActivity
+import com.lv.module_home.navigation.HomeNavigation
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.home_frag.*
 
@@ -32,7 +36,10 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun bindView(rootView: View) {
         home.setOnClickListener {
-            startActivity(Intent(context, TestActivity::class.java))
+            val intent = Intent(ACTION_VIEW)
+            intent.data = "home://www.google.com".toUri()
+            startActivity(intent)
+//            Navigation.findNavController(rootView).navigate(Uri.parse("home://frag3"))
         }
 
         request.setOnClickListener {

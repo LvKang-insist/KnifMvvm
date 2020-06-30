@@ -1,13 +1,9 @@
 package com.lv.module_discover
 
-import android.graphics.BitmapFactory
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import com.lv.library_core.base.ui.frag.BaseBindingFragment
+import com.standalone.core.base.ui.frag.BaseBindingFragment
 import com.lv.module_discover.databinding.DiscoverFragBinding
 import com.xiaojinzi.component.anno.FragmentAnno
-import kotlinx.android.synthetic.main.discover_frag.*
 
 /**
  * @name HomeFragment

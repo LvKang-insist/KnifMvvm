@@ -12,10 +12,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base-core" />
+            <option value="$PROJECT_DIR$/base-main" />
             <option value="$PROJECT_DIR$/module" />
             <option value="$PROJECT_DIR$/module-discover" />
             <option value="$PROJECT_DIR$/module-home" />
-            <option value="$PROJECT_DIR$/module-main" />
             <option value="$PROJECT_DIR$/module-sort" />
             <option value="$PROJECT_DIR$/module-user" />
             <option value="$PROJECT_DIR$/module/discover" />
@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/module/user" />
             <option value="$PROJECT_DIR$/standalone" />
             <option value="$PROJECT_DIR$/standalone/core" />
+            <option value="$PROJECT_DIR$/standalone/main" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.lv.library_core.utils.storage.dao.user.User
+import com.standalone.core.storage.dao.user.User
 
 /**
  * @name RvAdapter

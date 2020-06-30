@@ -3,7 +3,7 @@ include ':app'
 
 //library
 include ':base-core'
-include ':module-main'
+include ':base-main'
 include ':module-home'
 include ':module-sort'
 include ':module-discover'
@@ -18,4 +18,5 @@ include ':module:user'
 
 //standalone
 include 'standalone'
+include ':standalone:main'
 include ':standalone:core'

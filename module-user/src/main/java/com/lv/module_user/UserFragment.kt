@@ -1,9 +1,9 @@
 package com.lv.module_user
 
 import android.view.View
-import com.lv.library_core.base.ui.activity.skin.SkinManager
-import com.lv.library_core.base.ui.activity.skin.config.SkinPreUtils
-import com.lv.library_core.base.ui.frag.BaseLayoutFragment
+import com.standalone.core.base.ui.activity.skin.SkinManager
+import com.standalone.core.base.ui.activity.skin.config.SkinPreUtils
+import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.user_frag.*
 

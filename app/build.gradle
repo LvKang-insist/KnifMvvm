@@ -36,24 +36,7 @@ android {
         enabled true
     }
 
-    //虚拟机安装错误  解决
-    splits {
-        abi {
-            enable true
-            reset()
-            include 'x86', 'armeabi-v7a', 'x86_64'
-            universalApk true
-        }
-    }
 
-
-    packagingOptions {
-        pickFirst '**/libc++_shared.so'
-        doNotStrip "*/armeabi/libYTCommon.so"
-        doNotStrip "*/armeabi-v7a/libYTCommon.so"
-        doNotStrip "*/x86/libYTCommon.so"
-        doNotStrip "*/arm64-v8a/libYTCommon.so"
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -66,15 +49,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(path: ':module-main')
+    implementation project(path: ':base-main')
     implementation project(path: ':base-core')
 
-    kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
     implementation project(path: ':module-discover')
     implementation project(path: ':module-home')
     implementation project(path: ':module-sort')
     implementation project(path: ':module-user')
 
+    kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
     kapt "android.arch.persistence.room:compiler:2.2.3"
 
 }

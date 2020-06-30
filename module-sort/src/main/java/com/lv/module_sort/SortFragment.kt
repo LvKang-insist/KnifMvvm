@@ -1,15 +1,9 @@
 package com.lv.module_sort
 
 import android.view.View
-import android.widget.LinearLayout
-import androidx.constraintlayout.solver.Cache
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.elvishew.xlog.XLog
-import com.hjq.toast.ToastUtils
-import com.lv.library_core.base.ui.frag.BaseLayoutFragment
-import com.lv.library_core.utils.storage.CacheDataBase
-import com.lv.library_core.utils.storage.dao.user.User
+import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.sort_frag.*
 

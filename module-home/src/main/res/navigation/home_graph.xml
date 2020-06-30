@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/fragmentOne"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/fragmentOne"
+        android:name="com.lv.module_home.navigation.one.FragmentOne"
+        android:label="FragmentOne">
+        <action
+            android:id="@+id/action_fragmentOne_to_fragmentTwo"
+            app:destination="@id/fragmentTwo"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/action_fragmentOne_to_fragmentThree"
+            app:destination="@id/fragmentThree" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTwo"
+        android:name="com.lv.module_home.navigation.two.FragmentTwo"
+        android:label="FragmentTwo" />
+    <fragment
+        android:id="@+id/fragmentThree"
+        android:name="com.lv.module_home.navigation.three.FragmentThree"
+        android:label="FragmentThree">
+        <deepLink
+            app:uri="home://www.google.com" />
+    </fragment>
+</navigation>

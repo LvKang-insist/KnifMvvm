@@ -1,7 +1,7 @@
 package com.lv.module_user
 
 import androidx.lifecycle.SavedStateHandle
-import com.lv.library_core.base.viewmodel.BaseViewModel
+import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
  * @name UserViewModel

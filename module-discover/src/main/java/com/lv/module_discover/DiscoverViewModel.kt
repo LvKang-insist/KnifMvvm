@@ -1,7 +1,7 @@
 package com.lv.module_discover
 
 import androidx.lifecycle.SavedStateHandle
-import com.lv.library_core.base.viewmodel.BaseViewModel
+import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
  * @name DiscoverViewModel
@@ -10,7 +10,7 @@ import com.lv.library_core.base.viewmodel.BaseViewModel
  * @time 2020/5/19 22:59
  * @description
  */
-class DiscoverViewModel : BaseViewModel{
+class DiscoverViewModel : BaseViewModel {
     constructor() : super()
     constructor(state: SavedStateHandle) : super(state)
 }

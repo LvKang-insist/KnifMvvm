@@ -1,7 +1,8 @@
 package com.lv.admin
 
 import android.app.Application
-import com.lv.library_core.latte.Latte
+import com.lv.library_core.net.ApiServices
+import com.standalone.core.latte.Latte
 
 
 /**
@@ -19,7 +20,7 @@ class BaseApplication : Application() {
             .withLog()
             .withToastUtils()
             .withComponent()
-            .withLvHttp()
+            .withLvHttp(ApiServices::class.java)
             .configure()
 
     }
