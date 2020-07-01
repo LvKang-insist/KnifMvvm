@@ -1,4 +1,4 @@
-package com.standalone.core.storage.dao.user
+package com.standalone.core.storage.database.user
 
 import androidx.room.*
 

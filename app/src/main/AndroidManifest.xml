@@ -24,13 +24,13 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.lv.admin.ComponentInitializer"
+                android:name="com.lv.admin.startup.ComponentInitializer"
                 android:value="@string/androidx_startup" />
             <meta-data
-                android:name="com.lv.admin.LvHttpInitializer"
+                android:name="com.lv.admin.startup.LvHttpInitializer"
                 android:value="@string/androidx_startup" />
             <meta-data
-                android:name="com.lv.admin.UtilsInitializer"
+                android:name="com.lv.admin.startup.UtilsInitializer"
                 android:value="@string/androidx_startup" />
         </provider>
 

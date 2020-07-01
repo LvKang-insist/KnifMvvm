@@ -1,11 +1,11 @@
-package com.standalone.core.storage
+package com.standalone.core.storage.database
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.standalone.core.latte.Latte
-import com.standalone.core.storage.dao.user.User
-import com.standalone.core.storage.dao.user.UserDao
+import com.standalone.core.storage.database.user.User
+import com.standalone.core.storage.database.dao.UserDao
 
 /**
  * @name RoomDataBase

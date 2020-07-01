@@ -4,6 +4,8 @@ import android.app.Application
 import android.util.Log
 import com.lv.library_core.net.ApiServices
 import com.standalone.core.latte.Latte
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
 
 /**
@@ -13,9 +15,15 @@ import com.standalone.core.latte.Latte
  * @time 2020/5/7 22:53
  * @description
  */
+//https://juejin.im/post/5ef2f31951882565a94e06a5#heading-0
+@HiltAndroidApp
 class BaseApplication : Application() {
+
+    @Inject
+    lateinit var hiltTest: HiltTest
 
     override fun onCreate() {
         super.onCreate()
+        hiltTest.hiltTest()
     }
 }

@@ -85,4 +85,7 @@ dependencies {
 
     // App startup
     api "androidx.startup:startup-runtime:1.0.0-alpha01"
+
+    // MMKV
+    api 'com.tencent:mmkv-static:1.2.0'
 }

@@ -4,6 +4,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.xiaojinzi.component.plugin'
 
+
 android {
 
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -20,10 +21,11 @@ android {
                 // 配置业务模块的模块名称
                 arguments = ["HOST": "app"]
             }
-            ndk {
-                abiFilters "armeabi", "armeabi-v7a", "arm64-v8a","x86_64", "x86"
-            }
         }
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86_64", "x86"
+        }
+
     }
 
     buildTypes {
@@ -59,5 +61,6 @@ dependencies {
 
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
     kapt "android.arch.persistence.room:compiler:2.2.3"
+
 
 }

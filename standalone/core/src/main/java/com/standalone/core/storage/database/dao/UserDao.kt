@@ -1,8 +1,8 @@
-package com.standalone.core.storage.dao.user
+package com.standalone.core.storage.database.dao
 
 import androidx.paging.DataSource
 import androidx.room.*
-import com.standalone.core.storage.dao.user.User
+import com.standalone.core.storage.database.user.User
 
 
 /**

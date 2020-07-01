@@ -1,11 +1,6 @@
 package com.lv.module_sort
 
-import androidx.lifecycle.LiveData
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.standalone.core.base.viewmodel.BaseViewModel
-import com.standalone.core.storage.CacheDataBase
-import com.standalone.core.storage.dao.user.User
 
 /**
  * @name SortViewModel

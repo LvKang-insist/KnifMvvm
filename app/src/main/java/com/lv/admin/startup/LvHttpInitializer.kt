@@ -1,12 +1,11 @@
-package com.lv.admin
+package com.lv.admin.startup
 
 import android.app.Application
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.startup.Initializer
-import com.standalone.core.latte.LatteConfigKeys
-import com.standalone.core.latte.LatteConfigurator
+import com.lv.admin.Api
 import com.www.net.LvHttp
 import com.www.net.error.ErrorKey
 import com.www.net.error.ErrorValue

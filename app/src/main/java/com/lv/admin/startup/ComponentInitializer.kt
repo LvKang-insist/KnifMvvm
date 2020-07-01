@@ -1,10 +1,9 @@
-package com.lv.admin
+package com.lv.admin.startup
 
 import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.startup.Initializer
-import com.standalone.core.latte.Latte
 import com.xiaojinzi.component.Component
 import com.xiaojinzi.component.Config
 import com.xiaojinzi.component.impl.BuildConfig

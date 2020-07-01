@@ -1,4 +1,4 @@
-package com.lv.admin
+package com.lv.admin.startup
 
 import android.app.Application
 import android.content.Context
@@ -8,6 +8,7 @@ import com.elvishew.xlog.LogConfiguration
 import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
 import com.standalone.core.latte.Latte
+import com.tencent.mmkv.MMKV
 import java.util.*
 
 /**
@@ -44,6 +45,9 @@ object UtilsInit {
 
         //初始化 Toast
         ToastUtils.init(application)
+
+        //初始化 MMKV
+        MMKV.initialize(application)
 
         //初始化 Log
         XLog.init(
