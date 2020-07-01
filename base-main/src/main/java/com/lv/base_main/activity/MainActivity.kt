@@ -9,6 +9,7 @@ import com.standalone.main.bottom.BottomTabBean
 import com.standalone.main.bottom.ItemBuilder
 import com.standalone.main.bottom.base.BaseMainTabItemActivity
 import com.xiaojinzi.component.impl.Router
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  * @name MainActivity

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion rootProject.android.compileSdkVersion
@@ -15,7 +16,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 // 配置业务模块的模块名称
-                arguments = ["HOST": "moduleHome"]
+                arguments += ["HOST": "moduleHome"]
             }
         }
     }
@@ -40,4 +41,7 @@ android {
 dependencies {
     implementation project(path: ':base-core')
     kapt "com.github.xiaojinzi123.Component:component-compiler:1.8.2.2-androidx"
+
+    implementation 'com.google.dagger:hilt-android:2.28-alpha'
+    kapt 'com.google.dagger:hilt-android-compiler:2.28-alpha'
 }
