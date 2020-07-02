@@ -1,4 +1,4 @@
-package com.standalone.core.storage.database.user
+package com.lv.library_core.storage.bean
 
 import androidx.room.*
 

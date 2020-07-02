@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
  * @time 2020/5/7 22:59
  * @description
  */
-
 class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewModel>() {
 
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {

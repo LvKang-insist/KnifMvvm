@@ -3,7 +3,7 @@
 
 
     <application>
-        <activity android:name=".navigation.HomeNavigationActivity">
+        <activity android:name=".navigation.HomeContentActivity">
             <nav-graph android:value="@navigation/home_graph"/>
         </activity>
     </application>

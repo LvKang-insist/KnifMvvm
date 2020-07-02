@@ -26,7 +26,9 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
 
     constructor() : super()
 
-    constructor(state: SavedStateHandle) : super() {
+    constructor(
+        state: SavedStateHandle
+    ) : super() {
         this.savedStateHandler = state
     }
 
@@ -69,7 +71,6 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
-        XLog.e("------->销毁")
         mDefaultRepository = null
     }
 }

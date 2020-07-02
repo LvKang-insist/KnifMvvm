@@ -6,7 +6,9 @@ import android.view.View
 import androidx.core.net.toUri
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
+import com.lv.library_core.storage.dao.UserDao
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 import com.xiaojinzi.component.impl.Callback
@@ -26,6 +28,8 @@ import kotlinx.android.synthetic.main.sort_frag.*
 class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
 
+    lateinit var userDao: UserDao
+
     override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
 
     override fun layout(): Int {
@@ -34,12 +38,6 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun bindView(rootView: View) {
 
-        /*   val adapter = RvAdapter()
-           recycler.layoutManager = LinearLayoutManager(context)
-           recycler.adapter = adapter
-           viewModel.users.observe(this, Observer {
-               adapter.submitList(it)
-           })*/
 
         recycler.setOnClickListener {
             //深层链接，利用 uri 直接跳转到 FragmentThree 中
@@ -50,14 +48,6 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
         }
 
-
-//https://juejin.im/post/5db06bb6518825646d79070b#heading-23
-//         recycler.setOnClickListener {
-//             for (i in 0..40) {
-//                 val save = CacheDataBase.get().getUser().save(User(i, "LvKang", 26))
-//                 XLog.e(save)
-//             }
-//         }
     }
 
 

@@ -1,4 +1,4 @@
-package com.lv.module_sort
+package com.lv.module_home.navigation.two
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.standalone.core.storage.database.user.User
+import com.lv.library_core.storage.bean.User
+import com.lv.module_home.R
 
 /**
  * @name RvAdapter

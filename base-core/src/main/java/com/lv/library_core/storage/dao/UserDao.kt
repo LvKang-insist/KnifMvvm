@@ -1,8 +1,8 @@
-package com.standalone.core.storage.database.dao
+package com.lv.library_core.storage.dao
 
 import androidx.paging.DataSource
 import androidx.room.*
-import com.standalone.core.storage.database.user.User
+import com.lv.library_core.storage.bean.User
 
 
 /**
@@ -18,8 +18,8 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(user: User): Long
 
-    @Query("select *from user")
-    fun queryUser(): DataSource.Factory<Int, User>
+    @Query("select * from user where `id`=:id")
+    fun queryUser(id: Int): User
 
     @Delete
     fun delete(user: User)

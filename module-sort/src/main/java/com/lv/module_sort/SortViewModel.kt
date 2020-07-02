@@ -12,14 +12,5 @@ import com.standalone.core.base.viewmodel.BaseViewModel
 
 class SortViewModel : BaseViewModel() {
 
-//    val users: LiveData<PagedList<User>>
-
-    init {
-        //创建 DataSource.Factory
-//        val factory = CacheDataBase.get().getUser().queryUser()
-
-        //2,通过 LivePageListBuild 配置工厂和 pageSize，对 users 进行实例化
-//        users = LivePagedListBuilder(factory, 15).build()
-    }
 
 }

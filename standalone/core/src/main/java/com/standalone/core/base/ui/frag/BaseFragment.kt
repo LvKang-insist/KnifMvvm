@@ -52,7 +52,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     }
 
     fun permission(block: () -> Unit, permission: String) {
-        PermissionX.init(activity!!)
+        PermissionX.init(requireActivity())
             .permissions(permission)
             .request { allGranted, _, _ ->
                 if (allGranted) {
