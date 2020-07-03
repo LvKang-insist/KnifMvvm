@@ -3,14 +3,14 @@
     package="com.example.sort">
 
     <application
-        android:name="com.lv.library_core.single.SingleApplication"
+        android:name=".SortApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SingleActivity">
+        <activity android:name=".SortActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

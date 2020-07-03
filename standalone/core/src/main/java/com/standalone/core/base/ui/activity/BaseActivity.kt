@@ -1,4 +1,4 @@
-package com.lv.library_core.base.ui.activity
+package com.example.library_core.base.ui.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.lv.admin">
+    package="com.example.admin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".BaseApplication"
+        android:name="com.example.admin.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,23 +16,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
 
-
-        <!--        初始化项目-->
-        <provider
-            android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.lv.admin.androidx-startup"
-            android:exported="false"
-            tools:node="merge">
-            <meta-data
-                android:name="com.lv.admin.startup.ComponentInitializer"
-                android:value="@string/androidx_startup" />
-            <meta-data
-                android:name="com.lv.admin.startup.LvHttpInitializer"
-                android:value="@string/androidx_startup" />
-            <meta-data
-                android:name="com.lv.admin.startup.UtilsInitializer"
-                android:value="@string/androidx_startup" />
-        </provider>
 
     </application>
 

@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lv.base_main">
+    package="com.example.base_main">
 
 
     <application>
-        <activity android:name="com.lv.base_main.activity.MainActivity">
+        <activity android:name="com.example.base_main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lv.module_home">
+    package="com.example.module_home">
 
 
     <application>
-        <activity android:name=".navigation.HomeContentActivity">
+        <activity android:name="com.example.module_home.navigation.HomeContentActivity">
             <nav-graph android:value="@navigation/home_graph"/>
         </activity>
     </application>

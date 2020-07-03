@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatViewInflater
 import androidx.appcompat.widget.VectorEnabledTintResources
 import androidx.core.view.LayoutInflaterCompat
 import androidx.core.view.ViewCompat
-import com.lv.library_core.base.ui.activity.BaseActivity
+import com.example.library_core.base.ui.activity.BaseActivity
 import com.standalone.core.base.ui.activity.skin.SkinManager
 import com.standalone.core.base.ui.activity.skin.SkinResource
 import com.standalone.core.base.ui.activity.skin.attr.SkinAttr
