@@ -26,6 +26,7 @@ import javax.inject.Inject
 
 @FragmentAnno("HomeFragment")
 //@EntryPoint
+//@AndroidEntryPoint
 class HomeFragment : BaseBindingFragment<HomeFragBinding,HomeViewModel>() {
 
 //    @Inject

@@ -33,7 +33,7 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 
     override fun bindView(rootView: View) {
 
-        ToastUtils.show("${userA.getName()} -- ${userB.getName()}")
+//        ToastUtils.show("${userA.getName()} -- ${userB.getName()}")
 
         one.setOnClickListener {
 //            val bundle = Bundle()

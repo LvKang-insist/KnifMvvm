@@ -1,4 +1,4 @@
-package com.standalone.core.single
+package com.lv.library_core.single
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
