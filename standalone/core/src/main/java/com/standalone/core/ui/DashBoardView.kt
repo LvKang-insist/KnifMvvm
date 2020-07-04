@@ -12,7 +12,41 @@ class DashBoardView : View {
      */
     val angle = 120
 
+    /**
+     * 半径
+     */
     val radius = dp2px(150f)
+
+    /**
+     * 表圈宽度
+     */
+    val arcWidth = dp2px(5f)
+
+    /**
+     * 指针长度
+     */
+    val length = dp2px(100f)
+
+    /**
+     * 指针位置
+     */
+    val pointerPos = 5
+
+    /**
+     * 指针宽度
+     */
+    val pointerWidth = dp2px(4f)
+
+    /**
+     * 刻度数量
+     */
+    val scaleCount = 20
+
+    /**
+     * 刻度宽度
+     */
+    val scaleWidth = dp2px(2f)
+
 
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     val dash = Path()
@@ -49,23 +83,28 @@ class DashBoardView : View {
          * 2，横线之间的距离
          * 3，距离第一个刻度空多少。
          */
-        dashPath = PathDashPathEffect(dash, length / 19, 0f, PathDashPathEffect.Style.ROTATE)
-
+        dashPath =
+            PathDashPathEffect(dash, length / (scaleCount - 1), 0f, PathDashPathEffect.Style.ROTATE)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        //画线
+        //设置弧度的宽度
+        paint.strokeWidth = arcWidth
+        //画弧度
         canvas.drawArc(
             width / 2 - radius, height / 2 - radius,
             width / 2 + radius, height / 2 + radius,
             90 + angle / 2f, 360f - angle,
             false, paint
         )
+
+        //刻度的宽度
+        paint.strokeWidth = scaleWidth
         //画刻度
         paint.pathEffect = dashPath
-        //画线
+        //画弧度
         canvas.drawArc(
             width / 2 - radius, height / 2 - radius,
             width / 2 + radius, height / 2 + radius,
@@ -73,5 +112,20 @@ class DashBoardView : View {
             false, paint
         )
         paint.pathEffect = null
+
+        // 指针的宽度
+        paint.strokeWidth = pointerWidth
+        //画指针
+        canvas.drawLine(
+            (width / 2).toFloat(), (height / 2).toFloat(),
+            (Math.cos(Math.toRadians(getAngleFromMark(pointerPos - 1).toDouble())) * length).toFloat() + width / 2,
+            (Math.sin(Math.toRadians(getAngleFromMark(pointerPos - 1).toDouble())) * length).toFloat() + height / 2,
+            paint
+        )
+    }
+
+
+    fun getAngleFromMark(mark: Int): Int {
+        return (90 + angle.toFloat() / 2 + (360 - angle.toFloat()) / (scaleCount - 1) * mark).toInt()
     }
 }

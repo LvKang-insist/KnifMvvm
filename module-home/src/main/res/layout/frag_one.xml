@@ -16,8 +16,16 @@
         android:textStyle="bold" />
 
 
-    <com.standalone.core.ui.DashBoardView
+    <!--  <com.standalone.core.ui.DashBoardView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />-->
+
+    <!--    <com.standalone.core.ui.PieChart-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+
+    <com.standalone.core.ui.AvatarView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 </androidx.appcompat.widget.LinearLayoutCompat>
