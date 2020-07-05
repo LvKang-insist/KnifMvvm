@@ -17,7 +17,7 @@ class AvatarView : View {
 
     val saveYser = RectF()
 
-    var bitmap: Bitmap? = null
+    var bitmap: Bitmap = getAvatar(dp2px(400f).toInt())
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -27,13 +27,9 @@ class AvatarView : View {
         defStyleAttr
     )
 
-    {
-        bitmap = getAvatar(dp2px(300f).toInt())
-    }
-
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        saveYser.set(padding, padding, padding + width, padding + width)
+        saveYser.set(padding, padding, width - padding, width - padding)
     }
 
 
@@ -43,11 +39,11 @@ class AvatarView : View {
         //抠出一个 方块
         val saved = canvas.saveLayer(saveYser, paint)
         //在抠出的方块中画圆
-        canvas.drawOval(padding, padding, padding + width, padding + width, paint)
+        canvas.drawOval(padding, padding, width - padding, width - padding, paint)
         //保留覆盖的图，丢弃剩余的图
         paint.setXfermode(xfermode)
         //画个方形图片，结果就是保留这个圆，并且丢弃没有覆盖的地方
-        canvas.drawBitmap(bitmap!!, padding, padding, paint)
+        canvas.drawBitmap(bitmap, padding, padding, paint)
 
         //恢复 xfermode，保证后面绘制不会有问题
         paint.setXfermode(null)
