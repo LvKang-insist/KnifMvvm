@@ -7,6 +7,9 @@ import android.view.View
 import com.standalone.core.R
 import java.util.function.BiFunction
 
+/**
+ * 绘制头像
+ */
 class AvatarView : View {
 
     val paint = Paint()
@@ -17,7 +20,7 @@ class AvatarView : View {
 
     val saveYser = RectF()
 
-    var bitmap: Bitmap = getAvatar(dp2px(400f).toInt())
+    var bitmap: Bitmap = getAvatar(resources, dp2px(400f).toInt())
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -52,16 +55,4 @@ class AvatarView : View {
     }
 
 
-    fun getAvatar(width: Int): Bitmap {
-        val options = BitmapFactory.Options()
-        //设置 true，就只会取到宽高
-        options.inJustDecodeBounds = true
-        //拿到宽高
-        BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
-        //使用宽高，重新获取图片，对性能有一定好处
-        options.inJustDecodeBounds = false
-        options.inDensity = options.outWidth
-        options.inTargetDensity = width
-        return BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
-    }
 }

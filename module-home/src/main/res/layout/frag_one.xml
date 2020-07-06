@@ -25,7 +25,13 @@
     <!--        android:layout_height="match_parent" />-->
 
 
-    <com.standalone.core.ui.AvatarView
+    <!--    <com.standalone.core.ui.AvatarView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+
+    <com.standalone.core.ui.CustomView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,6 +8,10 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 
+/**'
+ *
+ * 绘制饼图
+ */
 class PieChart : View {
 
     private val radius = dp2px(150f).toInt()

@@ -5,6 +5,9 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
+/**
+ * 绘制刻度
+ */
 class DashBoardView : View {
 
     /**

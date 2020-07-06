@@ -10,6 +10,9 @@ import com.example.module_home.navigation.one.FragOneViewModel
 import com.standalone.core.base.ui.activity.BaseLayoutActivity
 import com.xiaojinzi.component.anno.RouterAnno
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @RouterAnno(path = "home_navigation")
