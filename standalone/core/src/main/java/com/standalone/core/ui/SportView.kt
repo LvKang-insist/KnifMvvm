@@ -4,8 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.elvishew.xlog.XLog
-import java.lang.reflect.Type
 
 /**
  * 绘制文本，位置
@@ -17,7 +15,8 @@ class SportView : View {
 
     val rect = Rect()
 
-
+    private var mScrollPos = 0f
+    private var mProcess: Int = 0
     val fontMetrics = Paint.FontMetrics()
 
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -41,6 +40,35 @@ class SportView : View {
         paint.textAlign = Paint.Align.CENTER
     }
 
+    /* */
+    /**
+     * 0 .. 360 之间
+     */
+    fun setScrollPos(scrollPos: Float) {
+        this.mScrollPos = scrollPos
+        invalidate()
+    }
+
+    fun getScrollPos(): Float {
+        return this.mScrollPos
+    }
+
+    fun setProcess(process: Int) {
+        this.mProcess = process
+        invalidate()
+    }
+
+    fun getProcess(): Int {
+        return mProcess
+    }
+
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        paint.textAlign = Paint.Align.CENTER
+        paint.getFontMetrics(fontMetrics)
+        paint.textSize = dp2px(50f)
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -58,26 +86,14 @@ class SportView : View {
         canvas.drawArc(
             width / 2 - radius, height / 2 - radius,
             width / 2 + radius, height / 2 + radius,
-            -90f, 180f, false, paint
+            -90f, mScrollPos, false, paint
         )
 
         //绘制文字
         paint.color = Color.RED
         paint.style = Paint.Style.FILL
-
-
-
-        paint.textAlign = Paint.Align.CENTER
-        paint.getFontMetrics(fontMetrics)
-//        val offset = (fontMetrics.ascent + fontMetrics.descent) / 2
-//        canvas.drawText("aaaa", (width / 2).toFloat(), (height / 2).toFloat() - offset, paint)
-
-
-        paint.getTextBounds("aaaa", 0, "aaaa".length, rect)
-        paint.textSize = 150f
-        paint.textAlign = Paint.Align.LEFT
-        canvas.drawText("aaaa", -(rect.left.toFloat()), 0f, paint)
-
+        val offset = (fontMetrics.ascent + fontMetrics.descent) / 2
+        canvas.drawText("$mProcess%", (width / 2).toFloat(), (height / 2).toFloat() - offset, paint)
     }
 
 }

@@ -22,10 +22,15 @@ fun getAvatar(resources: Resources, width: Int): Bitmap {
     //设置 true，就只会取到宽高
     options.inJustDecodeBounds = true
     //拿到宽高
-    BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
+    BitmapFactory.decodeResource(resources, R.drawable.abc, options)
     //使用宽高，重新获取图片，对性能有一定好处
     options.inJustDecodeBounds = false
     options.inDensity = options.outWidth
     options.inTargetDensity = width
-    return BitmapFactory.decodeResource(resources, R.drawable.avatar, options)
+
+    return BitmapFactory.decodeResource(resources, R.drawable.abc, options)
+}
+
+fun getZForCamera(): Float {
+    return -8f * Resources.getSystem().displayMetrics.density
 }

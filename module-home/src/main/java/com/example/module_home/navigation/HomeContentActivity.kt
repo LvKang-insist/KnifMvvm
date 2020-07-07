@@ -37,7 +37,7 @@ class HomeContentActivity : BaseLayoutActivity<FragOneViewModel>() {
 
     override fun bindView() {
 
-        model.requestBaiDu()
+//        model.requestBaiDu()
         model.testLiveData.observe(this, Observer {
             ToastUtils.show(it)
         })
