@@ -34,7 +34,7 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     /**
      * 下面翻起的度数
      */
-    var bottomFlip = 45f
+    var bottomFlip = 0f
         set(value) {
             field = value
             invalidate()
@@ -43,7 +43,7 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
     /**
      * 旋转角度
      */
-    var flipRotation = 20f
+    var flipRotation = 0f
         set(value) {
             field = value
             invalidate()
@@ -57,7 +57,6 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
 
 
         canvas.save()
@@ -79,7 +78,7 @@ class CustomView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 
         //下半部分
         canvas.translate((mLeft + (bitmapWidth / 2)), mTop + (bitmapWidth / 2).toFloat())
-        //旋转
+//        //旋转回来
         canvas.rotate(-flipRotation)
 
         camera.save()

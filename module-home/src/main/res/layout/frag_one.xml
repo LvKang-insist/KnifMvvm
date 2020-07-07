@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/black55"
+        android:contentDescription="哈好很"
         android:gravity="center"
         android:text="one"
         android:textColor="@color/black"
@@ -29,14 +30,14 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-<!--    <com.standalone.core.ui.SportView-->
-<!--        android:id="@+id/sport"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <!--    <com.standalone.core.ui.SportView-->
+    <!--        android:id="@+id/sport"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
-        <com.standalone.core.ui.CustomView
-            android:id="@+id/custom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+    <com.standalone.core.ui.CustomView
+        android:id="@+id/custom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
