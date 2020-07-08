@@ -47,9 +47,13 @@
     <!--        android:layout_height="match_parent" />-->
 
 
-    <com.standalone.core.ui.CountryView
-        android:id="@+id/country"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <com.standalone.core.ui.CountryView-->
+<!--        android:id="@+id/country"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+
+    <com.standalone.core.ui.DrawableView
+        android:layout_width="300dp"
+        android:layout_height="300dp"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

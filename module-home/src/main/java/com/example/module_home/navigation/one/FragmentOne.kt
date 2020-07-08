@@ -14,15 +14,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 
-    @A
-    @Inject
-    lateinit var userA: User
-
-    @B
-    @Inject
-    lateinit var userB: User
-
-
     override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java
 
     override fun layout(): Int {
@@ -36,7 +27,7 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
         one.setOnClickListener {
 ////            val bundle = Bundle()
 ////            bundle.putString("name", "345")
-            ToastUtils.show("动")
+//            ToastUtils.show("动")
 //            Navigation.findNavController(rootView).navigate(R.id.fragmentThree)
 
             /* val length = dp2px(400f)
