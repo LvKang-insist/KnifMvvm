@@ -30,13 +30,25 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <!--    <com.standalone.core.ui.SportView-->
-    <!--        android:id="@+id/sport"-->
+    <!--        <com.standalone.core.ui.SportView-->
+    <!--            android:id="@+id/sport"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent" />-->
+
+    <!--    <com.standalone.core.ui.CustomView-->
+    <!--        android:id="@+id/custom"-->
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <com.standalone.core.ui.CustomView
-        android:id="@+id/custom"
+
+    <!--    <com.standalone.core.ui.PointView-->
+    <!--        android:id="@+id/point"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
+
+
+    <com.standalone.core.ui.CountryView
+        android:id="@+id/country"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
