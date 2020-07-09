@@ -78,11 +78,10 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 //            animator.duration = 2000
 //            animator.start()
 
-
+            material.isFloatingLabel(false)
         }
     }
 }
-
 
 
 class PointEvaluator : TypeEvaluator<Point> {
