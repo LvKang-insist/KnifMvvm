@@ -4,10 +4,10 @@ import android.graphics.Color
 import androidx.fragment.app.Fragment
 import com.standalone.core.base.viewmodel.MainViewModel
 import com.example.base_main.R
-import com.example.base_main.databinding.BottomActivityBinding
 import com.standalone.main.bottom.BottomTabBean
 import com.standalone.main.bottom.ItemBuilder
 import com.standalone.main.bottom.base.BaseMainTabItemActivity
+import com.standalone.main.databinding.BottomActivityBindingImpl
 import com.xiaojinzi.component.impl.Router
 
 /**
@@ -18,7 +18,7 @@ import com.xiaojinzi.component.impl.Router
  * @description
  */
 //@AndroidEntryPoint
-class MainActivity : BaseMainTabItemActivity<BottomActivityBinding, MainViewModel>() {
+class MainActivity : BaseMainTabItemActivity<BottomActivityBindingImpl, MainViewModel>() {
 
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {
         val home = Router.with("HomeFragment").navigate()!!

@@ -91,7 +91,7 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
                 itemTitle.setTextColor(mSelectColor)
             }
         }
-        bottom_vp_content.offscreenPageLimit = size - 1
+        bottom_vp_content.offscreenPageLimit = size
         bottom_vp_content.adapter = mainContentAdapter
         bottom_vp_content.currentItem = mIndexPos
         bottom_vp_content.isUserInputEnabled = isScroll
