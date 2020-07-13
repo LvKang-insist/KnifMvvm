@@ -32,11 +32,5 @@ class User(id: Int, name: String, age: Int) {
         this.age = age
     }
 
-    override fun equals(other: Any?): Boolean {
-        return super.equals(other)
-    }
 
-    override fun hashCode(): Int {
-        return super.hashCode()
-    }
 }

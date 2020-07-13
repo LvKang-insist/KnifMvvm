@@ -5,8 +5,10 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
+import com.lvhttp.net.launch.launchVmHttp
 import com.standalone.core.base.viewmodel.BaseViewModel
-import com.www.net.launchVmHttp
+import kotlinx.coroutines.launch
 
 class HomeContentViewModel @ViewModelInject  constructor(
     private val response: HomeContentRepository,
@@ -20,6 +22,9 @@ class HomeContentViewModel @ViewModelInject  constructor(
     fun requestBaiDu() {
         launchVmHttp {
             liveData.postValue(response.requestBaidu())
+        }
+        viewModelScope.launch {
+
         }
     }
 }

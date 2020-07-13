@@ -5,10 +5,9 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.startup.Initializer
-import com.example.library_core.Api
-import com.www.net.LvHttp
-import com.www.net.error.ErrorKey
-import com.www.net.error.ErrorValue
+import com.lvhttp.net.LvHttp
+import com.lvhttp.net.error.ErrorKey
+import com.lvhttp.net.error.ErrorValue
 import java.util.*
 
 /**
@@ -37,7 +36,6 @@ object LvHttpInit {
             .setBaseUrl("https://api.github.com/")
             //是否开启缓存
             .isCache(false)
-            .setService(Api::class.java)
             //是否打印 log
             .isLoging(true)
             //对 Code 异常的处理，可自定义,参考 ResponseData 类

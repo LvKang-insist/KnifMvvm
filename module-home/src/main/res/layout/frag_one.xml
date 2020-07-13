@@ -58,31 +58,104 @@
     <!--        android:layout_width="300dp"-->
     <!--        android:layout_height="300dp"/>-->
 
-    <FrameLayout
+    <!-- <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:background="@color/black30">
+
+         <com.standalone.core.ui.MaterialEditText
+             android:id="@+id/material"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:hint="userName"
+             app:floatingLabel="true"
+             tools:ignore="HardcodedText" />
+     </FrameLayout>-->
+
+
+    <com.standalone.core.ui.TagLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/black30">
 
-        <com.standalone.core.ui.MaterialEditText
-            android:id="@+id/material"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="userName"
-            app:floatingLabel="true"
-            tools:ignore="HardcodedText" />
-    </FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/red"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/blue"
+            android:text="@string/hahaha" />
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:background="@color/black15">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/hahaha" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </FrameLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="40dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
+            android:background="@color/yellow"
+            android:text="@string/hahaha" />
+    </com.standalone.core.ui.TagLayout>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

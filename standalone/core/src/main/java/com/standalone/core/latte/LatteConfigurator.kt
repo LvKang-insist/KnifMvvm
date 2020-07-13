@@ -1,17 +1,5 @@
 package com.standalone.core.latte
 
-import android.util.Log
-import android.widget.Toast
-import com.elvishew.xlog.LogConfiguration
-import com.elvishew.xlog.XLog
-import com.hjq.toast.ToastUtils
-import com.www.net.LvHttp
-import com.www.net.error.ErrorKey
-import com.www.net.error.ErrorValue
-import com.xiaojinzi.component.Component
-import com.xiaojinzi.component.Config
-import com.xiaojinzi.component.impl.BuildConfig
-import com.xiaojinzi.component.impl.application.ModuleManager
 
 /**
  * @name LatteConfigurator

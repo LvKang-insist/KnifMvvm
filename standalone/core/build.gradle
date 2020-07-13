@@ -60,8 +60,7 @@ dependencies {
     //小金子路由
     api 'com.github.xiaojinzi123.Component:component-impl:1.8.2.2-androidx'
 
-    //网络请求库
-    api 'com.github.LvKang-insist:LvHttp:1.1.2'
+
 
     //权限处理
     api 'com.permissionx.guolindev:permissionx:1.1.1'

@@ -3,6 +3,7 @@ package com.example.module_home.navigation
 
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import com.hjq.toast.ToastUtils
 import com.example.module_home.R
@@ -37,17 +38,18 @@ class HomeContentActivity : BaseLayoutActivity<FragOneViewModel>() {
 
     override fun bindView() {
 
-//        model.requestBaiDu()
+        model.requestBaiDu()
         model.testLiveData.observe(this, Observer {
             ToastUtils.show(it)
         })
 
-          val navHost = NavHostFragment.create(R.navigation.home_graph)
-          supportFragmentManager
-              .beginTransaction()
-              .replace(R.id.home_content, navHost) // 相等于 xml 中的 app:defaultNavHost="true"
-              .setPrimaryNavigationFragment(navHost)
-              .commit()
+
+        val navHost = NavHostFragment.create(R.navigation.home_graph)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.home_content, navHost) // 相等于 xml 中的 app:defaultNavHost="true"
+            .setPrimaryNavigationFragment(navHost)
+            .commit()
     }
 
 

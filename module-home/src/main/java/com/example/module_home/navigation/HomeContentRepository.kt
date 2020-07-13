@@ -1,8 +1,8 @@
 package com.example.module_home.navigation
 
 import com.example.library_core.net.ApiServices
+import com.lvhttp.net.LvHttp
 import com.standalone.core.base.model.BaseRepository
-import com.www.net.LvHttp
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 

@@ -40,6 +40,11 @@ class SportView : View {
         paint.textAlign = Paint.Align.CENTER
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+//        resolveSize()
+    }
+
     /* */
     /**
      * 0 .. 360 之间

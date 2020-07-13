@@ -1,8 +1,6 @@
 package com.standalone.core.base.model
 
-import androidx.lifecycle.LiveData
-import com.elvishew.xlog.XLog
-import com.www.net.LvHttp
+
 
 /**
  * @name BaseRepository

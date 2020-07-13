@@ -78,7 +78,7 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 //            animator.duration = 2000
 //            animator.start()
 
-            material.isFloatingLabel(false)
+//            material.isFloatingLabel(false)
         }
     }
 }

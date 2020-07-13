@@ -2,7 +2,7 @@ package com.example.module_home
 
 import com.standalone.core.base.model.BaseRepository
 import com.example.library_core.net.ApiServices
-import com.www.net.LvHttp
+import com.lvhttp.net.LvHttp
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
