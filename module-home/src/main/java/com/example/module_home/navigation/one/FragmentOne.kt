@@ -21,64 +21,8 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
     }
 
     override fun bindView(rootView: View) {
-
-//        ToastUtils.show("${userA.getName()} -- ${userB.getName()}")
-
-        one.setOnClickListener {
-////            val bundle = Bundle()
-////            bundle.putString("name", "345")
-//            ToastUtils.show("动")
-//            Navigation.findNavController(rootView).navigate(R.id.fragmentThree)
-
-            /* val length = dp2px(400f)
-             val keyframe1 = Keyframe.ofFloat(0f, 0f * length)
-             val keyframe2 = Keyframe.ofFloat(0.2f, 0.8f * length)
-             val keyframe3 = Keyframe.ofFloat(0.8f, 1.3f * length)
-             val keyframe4 = Keyframe.ofFloat(1f, 1f * length)
-
-             val holder = PropertyValuesHolder.ofKeyframe(
-                 "translationY",
-                 keyframe1,
-                 keyframe2,
-                 keyframe3,
-                 keyframe4
-             )
-             val animator = ObjectAnimator.ofPropertyValuesHolder(one, holder)
-             animator.setDuration(2000)
-                 .start()*/
-
-//             val anim = ObjectAnimator
-//                 .ofFloat(sport, "ScrollPos", 0f, 270f, 360f)
-//                 .setDuration(1000)
-//             val proAnim = ObjectAnimator
-//                 .ofInt(sport, "Process", 0, 100)
-//                 .setDuration(1000)
-//
-//             val animSet = AnimatorSet()
-//             animSet.playTogether(anim, proAnim)
-//             animSet.start()
-
-
-//            val bottomFlip = ObjectAnimator
-//                .ofFloat(custom, "bottomFlip", 0f, 45f)
-//            val rotation = ObjectAnimator
-//                .ofFloat(custom, "flipRotation", 0f, 270f)
-//
-//            val topFlip = ObjectAnimator
-//                .ofFloat(custom, "topFlip", 0f, -45f)
-//
-//            val animatorSet = AnimatorSet()
-//            animatorSet.duration = 2000
-//            animatorSet.playSequentially(bottomFlip, rotation, topFlip)
-//            animatorSet.start()
-
-//            val targetPoint = Point(100, 100)
-//
-//            val animator = ObjectAnimator.ofObject(point, "point", PointEvaluator(), targetPoint)
-//            animator.duration = 2000
-//            animator.start()
-
-//            material.isFloatingLabel(false)
+        touch.setOnClickListener {
+            ToastUtils.show("点击")
         }
     }
 }
