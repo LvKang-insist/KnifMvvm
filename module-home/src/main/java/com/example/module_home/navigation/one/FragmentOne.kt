@@ -2,7 +2,9 @@ package com.example.module_home.navigation.one
 
 import android.animation.*
 import android.graphics.Point
+import android.os.Build
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.example.module_home.*
 import com.hjq.toast.ToastUtils
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
@@ -28,6 +30,7 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 }
 
 
+@RequiresApi(Build.VERSION_CODES.HONEYCOMB)
 class PointEvaluator : TypeEvaluator<Point> {
     override fun evaluate(fraction: Float, startValue: Point, endValue: Point): Point {
         // 初始值 (1,1) ,最后值(5,5) ， 执行到 0.2 ，x = 1+(5-1)*0.2 y = 1+(5-1)*0.2
