@@ -17,13 +17,17 @@
         android:orientation="vertical">
 
 
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/layout_toolbar" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
             android:layout_gravity="center"
+            android:layout_marginTop="50dp"
             android:text="Home"
             android:textColor="@color/black"
             android:textSize="20sp" />

@@ -20,14 +20,8 @@ import kotlinx.android.synthetic.main.home_frag.*
  */
 
 @FragmentAnno("HomeFragment")
-//@EntryPoint
-//@AndroidEntryPoint
-class HomeFragment : BaseBindingFragment<HomeFragBinding,HomeViewModel>() {
+class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
-//    @Inject
-//    lateinit var hiltTest: HiltTest
-
-//    val mViewModel by viewModels<HomeViewModel>()
 
     override fun createViewModel(): Class<HomeViewModel>? = HomeViewModel::class.java
 
@@ -35,17 +29,17 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding,HomeViewModel>() {
         return R.layout.home_frag
     }
 
+    override fun toolBarResId(): Int = R.id.toolbar
+
 
     override fun bindView(rootView: View) {
 
-//        home.text = hiltTest.hiltTest()
-//
+
         home.setOnClickListener {
             /*  //深层链接，利用 uri 直接跳转到 FragmentThree 中
                val intent = Intent(ACTION_VIEW)
               intent.data = "home://www/frag3".toUri()*/
             startActivity(Intent(context, HomeContentActivity::class.java))
-//            Navigation.findNavController(rootView).navigate(Uri.parse("home://frag3"))
         }
 
 
