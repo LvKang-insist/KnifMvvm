@@ -72,7 +72,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
                 createStateViewModel() ?: throw NullPointerException("$this ---> ViewModel 为 null")
             ViewModelProvider(
                 this,
-                SavedStateViewModelFactory(activity!!.application, this)
+                SavedStateViewModelFactory(requireActivity().application, this)
             ).get(stateViewModel)
         }
     }
