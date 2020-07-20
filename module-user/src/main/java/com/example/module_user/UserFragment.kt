@@ -20,11 +20,15 @@ class UserFragment : BaseLayoutFragment<UserViewModel>() {
 
     override fun createViewModel(): Class<UserViewModel> = UserViewModel::class.java
 
+    override fun isDark(): Boolean {
+        return false
+    }
+
     override fun layout(): Int {
         return R.layout.user_frag
     }
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
 
         main_Skin.setOnClickListener {
             if (SkinPreUtils.getTag()) {

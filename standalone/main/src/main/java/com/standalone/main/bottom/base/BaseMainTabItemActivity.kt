@@ -89,6 +89,7 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
             if (i == mIndexPos) {
                 GlideUtils.load(itemIcon, bottomTabBean.selectIcon)
                 itemTitle.setTextColor(mSelectColor)
+                initBar(true)
             }
         }
         bottom_vp_content.offscreenPageLimit = size
@@ -116,6 +117,10 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
             mTabBeans.add(it.key)
             mFragments.add(it.value)
         }
+    }
+
+    override fun isImmersionBar(): Boolean {
+        return false
     }
 
 

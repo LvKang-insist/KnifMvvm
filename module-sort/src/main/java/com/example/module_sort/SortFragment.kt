@@ -26,11 +26,15 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
 
+    override fun isDark(): Boolean {
+        return false
+    }
+
     override fun layout(): Int {
         return R.layout.sort_frag
     }
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
 
 
         recycler.setOnClickListener {

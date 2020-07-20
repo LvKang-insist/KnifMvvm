@@ -1,23 +1,29 @@
 package com.standalone.core.base.ui.frag
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
-import com.hjq.toast.ToastUtils
+import com.bumptech.glide.Glide
+import com.gyf.immersionbar.ImmersionBar
+import com.standalone.core.R
 import com.standalone.core.base.viewmodel.BaseViewModel
-import com.permissionx.guolindev.PermissionX
-import java.lang.NullPointerException
 
 abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     private var isLazyLoad = false
 
     lateinit var viewModel: VM
+
+    lateinit var rootView: View
 
     val mLayoutInflater: LayoutInflater? by lazy {
         LayoutInflater.from(context)
@@ -28,12 +34,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     ): View? {
         viewModel = setViewModel()
         lifecycle.addObserver(viewModel)
-        return initView(container)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        bindView(view)
-        bindView(view, savedInstanceState)
+        rootView = initView(container)
+        return rootView
     }
 
 
@@ -41,27 +43,18 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        initBar()
         if (!isLazyLoad) {
             isLazyLoad = true
-            lazyLoad()
+            bindView()
         }
     }
+
 
     fun <T> startActivity(clazz: Class<T>) {
         context?.startActivity(Intent(context, clazz))
     }
 
-    fun permission(block: () -> Unit, permission: String) {
-        PermissionX.init(requireActivity())
-            .permissions(permission)
-            .request { allGranted, _, _ ->
-                if (allGranted) {
-                    block()
-                } else {
-                    ToastUtils.show("权限获取失败")
-                }
-            }
-    }
 
     private fun setViewModel(): VM {
         val viewModel = createViewModel()
@@ -71,10 +64,37 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             val stateViewModel =
                 createStateViewModel() ?: throw NullPointerException("$this ---> ViewModel 为 null")
             ViewModelProvider(
-                this,
-                SavedStateViewModelFactory(requireActivity().application, this)
+                this, SavedStateViewModelFactory(requireActivity().application, this)
             ).get(stateViewModel)
         }
+    }
+
+    open fun initBar() {
+        val view = rootView.findViewById<View>(titleBarResId())
+        initBar(isDark(), view)
+    }
+
+    open fun initBar(isDark: Boolean, view: View?) {
+        ImmersionBar
+            .with(this)
+            .statusBarDarkFont(isDark)
+            .titleBar(view)
+            .init()
+    }
+
+
+    /**
+     * 设置 fragment 中状态栏的颜色
+     * 注意：如果要在 fragment 中设置状态栏的颜色，则需要在对应的 Activity 中重写 isImmersionBar 方法
+     *      并返回 false，否则无法生效
+     */
+    open fun isDark(): Boolean = true
+
+    /**
+     * toolbar id
+     */
+    open fun titleBarResId(): Int {
+        return View.NO_ID
     }
 
     /**
@@ -95,9 +115,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     /**
      * 逻辑处理
      */
-    abstract fun bindView(rootView: View)
+    abstract fun bindView()
 
-    open fun bindView(view: View, savedInstanceState: Bundle?) = Unit
 
     /**
      * 懒加载

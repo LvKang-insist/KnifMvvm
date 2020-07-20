@@ -22,7 +22,7 @@ class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding, DiscoverViewMo
         return R.layout.discover_frag
     }
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
 
     }
 

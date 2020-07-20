@@ -25,14 +25,15 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun createViewModel(): Class<HomeViewModel>? = HomeViewModel::class.java
 
+
+
     override fun layout(): Int {
         return R.layout.home_frag
     }
 
-    override fun toolBarResId(): Int = R.id.toolbar
 
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
 
 
         home.setOnClickListener {

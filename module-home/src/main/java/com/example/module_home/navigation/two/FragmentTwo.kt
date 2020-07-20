@@ -21,7 +21,7 @@ class FragmentTwo : BaseLayoutFragment<FragTwoViewModel>() {
         return R.layout.frag_two
     }
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
 
         val adapter = RvAdapter()
         recycler.layoutManager = LinearLayoutManager(context)

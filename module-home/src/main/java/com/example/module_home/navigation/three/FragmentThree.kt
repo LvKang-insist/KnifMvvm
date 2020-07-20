@@ -15,7 +15,7 @@ class FragmentThree : BaseLayoutFragment<FragThreeViewModel>() {
         return R.layout.frag_three
     }
 
-    override fun bindView(rootView: View) {
+    override fun bindView() {
         three.setOnClickListener {
             Navigation.findNavController(it).navigate(R.id.fragmentTwo)
         }
