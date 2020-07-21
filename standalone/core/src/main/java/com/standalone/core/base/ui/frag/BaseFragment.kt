@@ -70,8 +70,10 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     }
 
     open fun initBar() {
-        val view = rootView.findViewById<View>(titleBarResId())
-        initBar(isDark(), view)
+        if (isImmersionBar()) {
+            val view = rootView.findViewById<View>(titleBarResId())
+            initBar(isDark(), view)
+        }
     }
 
     open fun initBar(isDark: Boolean, view: View?) {
@@ -82,9 +84,15 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
             .init()
     }
 
+    /**
+     * 是否开启沉浸式状态栏，默认为 false
+     * 注意，开启后 Activity 中设置的沉浸式将会失效
+     */
+    open fun isImmersionBar(): Boolean = false
+
 
     /**
-     * 设置 fragment 中状态栏的颜色
+     * 设置 fragment 中状态栏的颜色,默认为 true
      * 注意：如果要在 fragment 中设置状态栏的颜色，则需要在对应的 Activity 中重写 isImmersionBar 方法
      *      并返回 false，否则无法生效
      */

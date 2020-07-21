@@ -11,6 +11,14 @@ import kotlinx.android.synthetic.main.frag_three.*
 class FragmentThree : BaseLayoutFragment<FragThreeViewModel>() {
     override fun createViewModel(): Class<FragThreeViewModel>? = FragThreeViewModel::class.java
 
+    override fun isImmersionBar(): Boolean {
+        return true
+    }
+
+    override fun isDark(): Boolean {
+        return false
+    }
+
     override fun layout(): Int {
         return R.layout.frag_three
     }

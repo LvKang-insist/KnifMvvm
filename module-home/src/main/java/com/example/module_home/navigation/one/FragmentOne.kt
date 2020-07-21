@@ -5,6 +5,7 @@ import android.graphics.Point
 import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.navigation.Navigation
 import com.example.module_home.*
 import com.hjq.toast.ToastUtils
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
@@ -19,15 +20,14 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
     override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java
 
 
-
     override fun layout(): Int {
         return R.layout.frag_one
     }
 
 
     override fun bindView() {
-        touch.setOnClickListener {
-            ToastUtils.show("点击")
+        one.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.fragmentThree)
         }
     }
 }

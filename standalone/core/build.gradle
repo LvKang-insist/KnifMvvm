@@ -87,4 +87,10 @@ dependencies {
 
     // MMKV
     api 'com.tencent:mmkv-static:1.2.0'
+
+    //RecyclerView 的适配器依赖
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+
+    //图片圆形化
+    api 'de.hdodenhof:circleimageview:3.0.0'
 }

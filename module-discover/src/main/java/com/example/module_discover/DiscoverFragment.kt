@@ -18,6 +18,10 @@ class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding, DiscoverViewMo
 
     override fun createViewModel(): Class<DiscoverViewModel> = DiscoverViewModel::class.java
 
+    override fun isImmersionBar(): Boolean {
+        return true
+    }
+
     override fun layout(): Int {
         return R.layout.discover_frag
     }

@@ -159,6 +159,9 @@
     <!--            android:text="@string/hahaha" />-->
     <!--    </com.standalone.core.ui.TagLayout>-->
 
+    <com.standalone.core.ui.ScalableImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <com.standalone.core.ui.TouchView
         android:id="@+id/touch"

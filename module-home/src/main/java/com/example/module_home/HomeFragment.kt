@@ -25,13 +25,13 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun createViewModel(): Class<HomeViewModel>? = HomeViewModel::class.java
 
-
+    override fun isImmersionBar(): Boolean {
+        return true
+    }
 
     override fun layout(): Int {
         return R.layout.home_frag
     }
-
-
 
     override fun bindView() {
 

@@ -24,6 +24,10 @@ class UserFragment : BaseLayoutFragment<UserViewModel>() {
         return false
     }
 
+    override fun isImmersionBar(): Boolean {
+        return true
+    }
+
     override fun layout(): Int {
         return R.layout.user_frag
     }

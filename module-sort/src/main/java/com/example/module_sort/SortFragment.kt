@@ -26,6 +26,10 @@ class SortFragment : BaseLayoutFragment<SortViewModel>() {
 
     override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
 
+    override fun isImmersionBar(): Boolean {
+        return true
+    }
+
     override fun isDark(): Boolean {
         return false
     }

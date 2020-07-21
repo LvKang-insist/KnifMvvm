@@ -44,9 +44,6 @@ class HomeContentActivity : BaseActivity<FragOneViewModel>() {
 
     val model by viewModels<HomeContentViewModel>()
 
-    override fun isImmersionBar(): Boolean {
-        return false
-    }
 
     override fun bindView() {
 

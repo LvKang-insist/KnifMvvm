@@ -7,14 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.gyf.immersionbar.ImmersionBar
-import com.hjq.toast.ToastUtils
 import com.standalone.core.R
 import com.standalone.core.base.viewmodel.BaseViewModel
 
@@ -87,7 +85,7 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
      *
      * @param isDark
      */
-     fun initBar(isDark: Boolean) {
+    fun initBar(isDark: Boolean) {
         initBar(isDark, toolBarResId())
     }
 
@@ -104,7 +102,7 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
      *
      * @return
      */
-    open fun toolbarTitle(): String?  =""
+    open fun toolbarTitle(): String? = ""
 
 
     /**
@@ -120,7 +118,7 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
      *
      * @return
      */
-    open fun isBarDark(): Boolean  = false
+    open fun isBarDark(): Boolean = true
 
     /**
      * 页面标题栏的 ID
