@@ -1,6 +1,7 @@
 package com.standalone.core.base.model
 
-
+import com.lvhttp.net.LvHttp
+import com.standalone.core.ApiService
 
 /**
  * @name BaseRepository
@@ -11,6 +12,19 @@ package com.standalone.core.base.model
  */
 abstract class BaseRepository {
 
+    /**
+     * 初始化 api 接口
+     */
+    val lvHttp by lazy { LvHttp.createApi(ApiService::class.java) }
 
+    /**
+     * 默认的网络请求
+     */
+    suspend fun get(url: String): String {
+        return lvHttp.get(url)
+    }
 
+    suspend fun post(url: String, mutableMap: MutableMap<String, Any>): String {
+        return lvHttp.post(url, mutableMap)
+    }
 }

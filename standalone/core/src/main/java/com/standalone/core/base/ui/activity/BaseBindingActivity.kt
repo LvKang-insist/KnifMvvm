@@ -30,8 +30,4 @@ abstract class BaseBindingActivity<V : ViewDataBinding, VM : BaseViewModel> :
         }
     }
 
-    /**
-     * 沉浸式状态栏的适配
-     */
-    open fun immersion(): Int = -1
 }

@@ -2,6 +2,8 @@ package com.standalone.core.base.ui.frag
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.hjq.toast.ToastUtils
 import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
@@ -15,7 +17,15 @@ import com.standalone.core.base.viewmodel.BaseViewModel
 abstract class BaseLayoutFragment<VM : BaseViewModel> : BaseFragment<VM>() {
 
     override fun initView(container: ViewGroup?): View {
-        return mLayoutInflater!!.inflate(layout(), container, false)
+
+        viewModel.run {
+            //默认实现 Toast
+            getFinally().observe(this@BaseLayoutFragment, Observer {
+                ToastUtils.show(it)
+            })
+        }
+
+        return mLayoutInflater.inflate(layout(), container, false)
     }
 
 }

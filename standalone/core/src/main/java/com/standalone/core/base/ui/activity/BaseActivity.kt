@@ -30,12 +30,9 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(
-            this,
-            SavedStateViewModelFactory(application, this)
-        ).get(setViewModel())
-        lifecycle.addObserver(viewModel)
+        setViewModel()
         initView()
+        lifecycle.addObserver(viewModel)
         initBar()
         bindView()
     }
@@ -49,6 +46,19 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
             else -> {
                 throw NullPointerException("布局初始化异常")
             }
+        }
+    }
+
+    private fun setViewModel() {
+        val viewModel = createViewModel()
+        this.viewModel = if (viewModel != null) {
+            ViewModelProvider(this).get(viewModel)
+        } else {
+            val stateViewModel = createStateViewModel()
+                ?: throw NullPointerException("$this ---> ViewModel 为 null")
+            ViewModelProvider(
+                this, SavedStateViewModelFactory(application, this)
+            ).get(stateViewModel)
         }
     }
 
@@ -127,7 +137,17 @@ abstract class BaseActivity<VM : BaseViewModel>() : AppCompatActivity() {
      */
     open fun toolBarResId(): Int = View.NO_ID
 
-    abstract fun setViewModel(): Class<VM>
+    /**
+     * 设置 ViewModel此，
+     * 方法默认必须实现，结果可为 null
+     * 为 null 时则调用下面的方法
+     */
+    abstract fun createViewModel(): Class<VM>?
+
+    /**
+     * 带数据恢复的 ViewModel，可通过 savedStateHandler 进行设置
+     */
+    open fun createStateViewModel(): Class<VM>? = null
 
     abstract fun layout(): Int
 

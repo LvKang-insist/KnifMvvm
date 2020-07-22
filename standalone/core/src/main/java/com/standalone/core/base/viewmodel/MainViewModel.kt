@@ -11,7 +11,6 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @description
  */
 
-class MainViewModel : BaseViewModel {
-    constructor() : super()
-    constructor(state: SavedStateHandle) : super(state)
+class MainViewModel : BaseViewModel() {
+
 }

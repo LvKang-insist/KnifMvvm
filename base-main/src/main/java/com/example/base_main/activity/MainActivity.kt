@@ -20,6 +20,9 @@ import com.xiaojinzi.component.impl.Router
 //@AndroidEntryPoint
 class MainActivity : BaseMainTabItemActivity<BottomActivityBindingImpl, MainViewModel>() {
 
+    override fun createViewModel(): Class<MainViewModel>? = MainViewModel::class.java
+
+
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {
         val home = Router.with("HomeFragment").navigate()!!
         val sort = Router.with("sort-fragment").navigate()!!
@@ -52,8 +55,6 @@ class MainActivity : BaseMainTabItemActivity<BottomActivityBindingImpl, MainView
     }
 
     override fun isScroll(): Boolean = true
-
-    override fun setViewModel(): Class<MainViewModel> = MainViewModel::class.java
 
 
 }

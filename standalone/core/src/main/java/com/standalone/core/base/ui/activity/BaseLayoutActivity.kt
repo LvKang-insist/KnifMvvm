@@ -2,6 +2,7 @@ package com.standalone.core.base.ui.activity
 
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.hjq.toast.ToastUtils
 import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
@@ -18,8 +19,9 @@ abstract class BaseLayoutActivity<VM : BaseViewModel> : BaseSkinActivity<VM>() {
         super.initView()
 
         viewModel.run {
+            //默认实现 Toast
             getFinally().observe(this@BaseLayoutActivity, Observer {
-                Toast.makeText(this@BaseLayoutActivity, it, Toast.LENGTH_LONG).show()
+                ToastUtils.show(it)
             })
         }
     }

@@ -25,7 +25,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     lateinit var rootView: View
 
-    val mLayoutInflater: LayoutInflater? by lazy {
+    val mLayoutInflater: LayoutInflater by lazy {
         LayoutInflater.from(context)
     }
 
@@ -61,8 +61,8 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         return if (viewModel != null) {
             ViewModelProvider(this).get(viewModel)
         } else {
-            val stateViewModel =
-                createStateViewModel() ?: throw NullPointerException("$this ---> ViewModel 为 null")
+            val stateViewModel = createStateViewModel()
+                ?: throw NullPointerException("$this ---> ViewModel 为 null")
             ViewModelProvider(
                 this, SavedStateViewModelFactory(requireActivity().application, this)
             ).get(stateViewModel)
@@ -106,9 +106,11 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
     }
 
     /**
-     * 设置 ViewModel
+     * 设置 ViewModel此，
+     * 方法默认必须实现，结果可为 null
+     * 为 null 时则调用下面的方法
      */
-    open fun createViewModel(): Class<VM>? = null
+    abstract fun createViewModel(): Class<VM>?
 
     /**
      * 带数据恢复的 ViewModel，可通过 savedStateHandler 进行设置

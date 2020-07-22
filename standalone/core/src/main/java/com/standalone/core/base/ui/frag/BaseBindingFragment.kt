@@ -4,6 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
+import com.hjq.toast.ToastUtils
 import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
@@ -22,6 +24,13 @@ abstract class BaseBindingFragment<V : ViewDataBinding, VM : BaseViewModel> : Ba
         val binding =
             DataBindingUtil.inflate<V>(mLayoutInflater!!, layout(), container, false)
         this.binding = binding
+
+        viewModel.run {
+            //默认实现 Toast
+            getFinally().observe(this@BaseBindingFragment, Observer {
+                ToastUtils.show(it)
+            })
+        }
 
         return binding.root
     }

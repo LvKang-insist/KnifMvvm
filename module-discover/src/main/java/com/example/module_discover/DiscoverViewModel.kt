@@ -10,7 +10,6 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @time 2020/5/19 22:59
  * @description
  */
-class DiscoverViewModel : BaseViewModel {
-    constructor() : super()
-    constructor(state: SavedStateHandle) : super(state)
+class DiscoverViewModel : BaseViewModel() {
+
 }

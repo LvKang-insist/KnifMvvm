@@ -1,6 +1,7 @@
 package com.example.module_home
 
 import android.content.Intent
+import android.graphics.Paint
 import android.view.View
 import androidx.lifecycle.Observer
 import com.hjq.toast.ToastUtils
@@ -35,7 +36,6 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
 
     override fun bindView() {
 
-
         home.setOnClickListener {
             /*  //深层链接，利用 uri 直接跳转到 FragmentThree 中
                val intent = Intent(ACTION_VIEW)
@@ -47,7 +47,7 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, HomeViewModel>() {
         request.setOnClickListener {
             viewModel.login()
         }
-        viewModel.loginLiveData.observe(this, Observer {
+        viewModel.loginObserver.observe(this, Observer {
             ToastUtils.show(it)
             binding.data = it
         })

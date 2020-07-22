@@ -6,22 +6,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.example.module_home.HomeRepository
 import com.lvhttp.net.launch.launchVmHttp
+import com.standalone.core.base.viewmodel.BaseSaveStateViewModel
 import com.standalone.core.base.viewmodel.BaseViewModel
 import kotlinx.coroutines.launch
 
-class HomeContentViewModel @ViewModelInject  constructor(
-    private val response: HomeContentRepository,
-    @Assisted val  state: SavedStateHandle
-) : BaseViewModel(state) {
+class HomeContentViewModel : BaseSaveStateViewModel {
+
+    constructor() : super()
+    constructor (state: SavedStateHandle) : super(state)
 
     private val liveData by lazy { MutableLiveData<String>() }
 
     val testLiveData: LiveData<String> by lazy { liveData }
 
+    val repository by lazy { HomeContentRepository() }
+
     fun requestBaiDu() {
         launchVmHttp {
-            liveData.postValue(response.requestBaidu())
+            liveData.postValue(repository.requestBaidu())
         }
         viewModelScope.launch {
 

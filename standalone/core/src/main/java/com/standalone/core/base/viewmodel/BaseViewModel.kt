@@ -2,7 +2,9 @@ package com.standalone.core.base.viewmodel
 
 import androidx.lifecycle.*
 import com.elvishew.xlog.XLog
+import com.lvhttp.net.launch.launchVmHttp
 import com.standalone.core.base.model.BaseRepository
+import com.standalone.core.base.model.DefaultRepository
 
 /**
  * @name BaseViewModel
@@ -11,33 +13,58 @@ import com.standalone.core.base.model.BaseRepository
  * @time 2020/5/12 22:44
  * @description BaseViewModel ，
  */
-@Suppress("UNCHECKED_CAST")
-abstract class BaseViewModel : ViewModel, LifecycleObserver {
+
+abstract class BaseViewModel : ViewModel(), LifecycleObserver {
+
+
+    private val repository by lazy { DefaultRepository() }
+
+    private val finally by lazy { MutableLiveData<String>() }
+
+    private val request by lazy { MutableLiveData<String>() }
+
+    private val requestError by lazy { MutableLiveData<Throwable>() }
+
 
     /**
-     * ViewModel 在内存不足时被干掉后的数据恢复
-     * 包括在页面转屏的时候都会通知对应的观察者
+     * 默认的 get 请求
      */
-    private lateinit var savedStateHandler: SavedStateHandle
-
-    //可在请求完成后调用，用于提示
-    protected val finally by lazy { MutableLiveData<String>() }
-
-
-    constructor() : super()
-
-    constructor(
-        state: SavedStateHandle
-    ) : super() {
-        this.savedStateHandler = state
+    fun get(url: String) {
+        launchVmHttp(error = {
+            requestError.postValue(it)
+        }) {
+            val result = repository.get(url)
+            request.postValue(result)
+        }
     }
 
-    //Repository
-    private var mDefaultRepository: BaseRepository? = null
-        get() {
-            if (field == null) field = object : BaseRepository() {}
-            return field
+    /**
+     * 默认的 post 请求
+     */
+    fun post(url: String, mutableMap: MutableMap<String, Any>) {
+        launchVmHttp(error = {
+            requestError.postValue(it)
+        }) {
+            val result = repository.post(url, mutableMap)
+            request.postValue(result)
         }
+    }
+
+
+    /**
+     * 获取请求数据的结果的 liveData
+     * 可对数据进行观察
+     */
+    fun result(): LiveData<String> {
+        return request
+    }
+
+    /**
+     * 默认的请求失败后，会通过 requestError 进行通知
+     */
+    fun resultError(): LiveData<Throwable> {
+        return requestError
+    }
 
     /**
      * 可在数据处理完成时调用，用于弹出一些提示
@@ -46,31 +73,4 @@ abstract class BaseViewModel : ViewModel, LifecycleObserver {
         return finally
     }
 
-
-    /**
-     * 保存数据到 savedStateHandler
-     */
-    fun <T> saveCurrentValue(key: String, t: T) {
-        savedStateHandler.set(key, t)
-    }
-
-    /**
-     * 从 savedStateHandler 取出数据
-     */
-    fun <T> getCurrentValue(key: String): T? {
-        return savedStateHandler.get(key)
-    }
-
-    /**
-     * 获取指定 savedStateHandler key 的 liveData
-     */
-    fun <T> getSaveStateLiveData(key: String): LiveData<T> {
-        return savedStateHandler.getLiveData(key)
-    }
-
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        mDefaultRepository = null
-    }
 }
