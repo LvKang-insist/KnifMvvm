@@ -34,7 +34,7 @@ class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
             Navigation.findNavController(it).navigate(R.id.fragmentThree)
         }
 
-//        scroll.adapter = ScrollAdapter(R.layout.layout)
+        scroll.adapter = ScrollAdapter(R.layout.layout)
     }
 
     class ScrollAdapter(layoutRes: Int) : PageAdapter(layoutRes) {

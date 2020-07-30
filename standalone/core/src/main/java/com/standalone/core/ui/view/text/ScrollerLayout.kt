@@ -8,6 +8,7 @@ import android.widget.OverScroller
 import android.widget.Scroller
 import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.ViewConfigurationCompat
+import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
 import com.standalone.core.ui.view.text.PageAdapter
 import kotlin.math.abs
@@ -215,7 +216,7 @@ class ScrollerLayout : ViewGroup {
 ////                }
 ////                val dy = targetIndex * height - scrollY
                     //调用 startScroll 方法来初始化数据并刷新界面
-//                mScroller.startScroll(0, scrollY, 0, 100)
+//                    scroller.startScroll(0, scrollY, 0, 100)
                     mPosition = targetIndex - 1
                     invalidate()
                 }
@@ -230,7 +231,7 @@ class ScrollerLayout : ViewGroup {
             scroller.fling(
                 0, scrollY,
                 velocityX.toInt(), velocityY.toInt(),
-                0, 0, 200, 0
+                0, 0, 0, height
             )
             return false
         }
@@ -264,7 +265,24 @@ class ScrollerLayout : ViewGroup {
         //重新 computeScroll 方法，并在内部完成平滑滚动逻辑
         //判断滚动操作是否完成了，如果没有完成就继续滚动
         if (scroller.computeScrollOffset()) {
-            scrollTo(scroller.currX, scroller.currY)
+
+            var y = 0;
+            y =
+                if (mYDown > mYUp) {
+                    if (scrollY + scroller.startY < childCount * getChildAt(0).measuredHeight) {
+                        scrollY + scroller.startY
+                    } else {
+                        childCount * getChildAt(0).measuredHeight
+                    }
+                } else {
+                    if (scrollY - scroller.startY > 0) {
+                        scrollY - scroller.startY
+                    } else {
+                        0
+                    }
+                }
+//            scroller.startY
+            scrollTo(scroller.currX, y)
             invalidate()
         }
     }
