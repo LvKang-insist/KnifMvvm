@@ -11,9 +11,9 @@
         android:id="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:background="@color/black55"
         android:contentDescription="哈好很"
-        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="one"
         android:textColor="@color/black"
@@ -159,10 +159,13 @@
     <!--            android:text="@string/hahaha" />-->
     <!--    </com.standalone.core.ui.TagLayout>-->
 
-    <com.standalone.core.ui.ScalableImageView
+    <!--    <com.standalone.core.ui.ScalableImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"/>-->
+
+
+    <com.standalone.core.ui.view.MultiTouchView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
+        android:layout_height="match_parent" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
