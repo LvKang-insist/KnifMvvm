@@ -1,4 +1,4 @@
-package com.standalone.core.ui
+package com.standalone.core.ui.view
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
@@ -13,11 +13,16 @@ import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
+import com.standalone.core.ui.dp2px
+import com.standalone.core.ui.getAvatar
 
 class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    var bitmap: Bitmap = getAvatar(resources, dp2px(200f).toInt())
+    var bitmap: Bitmap = getAvatar(
+        resources,
+        dp2px(200f).toInt()
+    )
 
     //初始偏移
     var originalOffsetX = 0f
@@ -62,9 +67,11 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context,
             invalidate()
         }
 
+    private var gestureListenerImpl = GestureListenerImpl()
+
     //手势侦测器
     private var detector: GestureDetectorCompat =
-        GestureDetectorCompat(getContext(), GestureListenerImpl())
+        GestureDetectorCompat(getContext(), gestureListenerImpl)
 
     //计算滑动的偏移，常用于 onFling 方法中
     private var scroller = OverScroller(context)
@@ -97,10 +104,10 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context,
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-//        var result = scaleDetector.onTouchEvent(event)
-//        if (!scaleDetector.isInProgress) {
-            var result = detector.onTouchEvent(event)
-//        }
+        var result = scaleDetector.onTouchEvent(event)
+        if (!scaleDetector.isInProgress) {
+            result = detector.onTouchEvent(event)
+        }
         return result
     }
 
@@ -156,7 +163,8 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context,
     /**
      * 双击，滑动等处理
      */
-    inner class GestureListenerImpl : GestureDetector.SimpleOnGestureListener() {
+    inner class GestureListenerImpl : GestureDetector.OnGestureListener,
+        GestureDetector.OnDoubleTapListener {
         //双击事件
         override fun onDoubleTap(e: MotionEvent): Boolean {
             big = !big
@@ -232,6 +240,31 @@ class ScalableImageView(context: Context?, attrs: AttributeSet?) : View(context,
             }
             return false
         }
+
+        override fun onLongPress(e: MotionEvent?) {
+
+        }
+
+        override fun onShowPress(e: MotionEvent?) {
+
+        }
+
+        override fun onSingleTapUp(e: MotionEvent?): Boolean {
+            return false
+        }
+
+        override fun onDown(e: MotionEvent?): Boolean {
+            return true
+        }
+
+        override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
+            return false
+        }
+
+        override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+            return false
+        }
+
 
         private fun run() {
             //更新位置，并返回该动画是否还在执行中，没结束为 true
