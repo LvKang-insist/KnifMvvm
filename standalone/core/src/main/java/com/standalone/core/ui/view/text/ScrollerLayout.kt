@@ -1,16 +1,15 @@
-package com.business.tools.views.page
+package com.standalone.core.ui.view.text
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.*
 import android.widget.OverScroller
-import android.widget.Scroller
 import androidx.core.view.GestureDetectorCompat
 import androidx.core.view.ViewConfigurationCompat
 import com.elvishew.xlog.XLog
-import com.hjq.toast.ToastUtils
-import com.standalone.core.ui.view.text.PageAdapter
 import kotlin.math.abs
 
 /**
@@ -81,6 +80,16 @@ class ScrollerLayout : ViewGroup {
     private var layoutInflater = LayoutInflater.from(context)
 
 
+    var mLastFlingY = 0
+
+    var mWidth = 0
+    var mHeight = 0
+
+    var selectHeightTop = 0
+    var selectHeightBottom = 0
+
+    var childHeight = 0
+
     /**
      * 适配器
      */
@@ -103,13 +112,26 @@ class ScrollerLayout : ViewGroup {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
         for (i in 0 until childCount) {
             val childView = getChildAt(i)
             //测量子控件的大小
             measureChild(childView, widthMeasureSpec, heightMeasureSpec)
+            if (getChildAt(i).measuredHeight > childHeight) {
+                childHeight = getChildAt(i).measuredHeight
+            }
         }
+
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        val centre = childHeight / 2
+        selectHeightTop = height / 2 - centre
+        selectHeightBottom = height / 2 + centre
+
+        XLog.e("$selectHeightTop --- $selectHeightBottom")
+    }
 
     /**
      * 创建视图
@@ -144,12 +166,24 @@ class ScrollerLayout : ViewGroup {
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         if (changed && childCount > 0) {
             val childCount = childCount
+
+            var top = 0
             for (i in 0 until childCount) {
                 val childView = getChildAt(i)
+
+                val bottom = top + childView.measuredHeight
+                val right = 0 + childView.measuredWidth
+                if (bottom > mHeight) {
+                    mHeight = bottom
+                }
+                if (right > mWidth) {
+                    mWidth = right
+                }
                 childView.layout(
                     0, i * childView.measuredHeight,
                     childView.measuredWidth, (i + 1) * childView.measuredHeight
                 )
+                top += childView.measuredHeight
             }
             //获取左右边界
             topBorder = getChildAt(0).top
@@ -202,7 +236,7 @@ class ScrollerLayout : ViewGroup {
                         return true
                     }
                     //移动
-                    scrollBy(0, scrolledY)
+                    constrainScrollBy(0, scrolledY)
                     mYLastMove = mYMove
                 }
                 MotionEvent.ACTION_UP -> {
@@ -216,9 +250,18 @@ class ScrollerLayout : ViewGroup {
 ////                }
 ////                val dy = targetIndex * height - scrollY
                     //调用 startScroll 方法来初始化数据并刷新界面
-//                    scroller.startScroll(0, scrollY, 0, 100)
-                    mPosition = targetIndex - 1
-                    invalidate()
+//                    if (scrollY == 0) {
+//                        return false
+//                    } else if (mHeight == scrollY) {
+//                        return false
+//                    }
+//                    scroller.startScroll(0, mYUp.toInt(), 0, 1000)
+
+                    scrollBy(0, 1000)
+
+//                    mLastFlingY = scrollY
+//                    mPosition = targetIndex - 1
+//                    invalidate()
                 }
             }
             return false
@@ -227,13 +270,54 @@ class ScrollerLayout : ViewGroup {
         override fun onFling(
             e1: MotionEvent?, event: MotionEvent?, velocityX: Float, velocityY: Float
         ): Boolean {
-
-            scroller.fling(
-                0, scrollY,
-                velocityX.toInt(), velocityY.toInt(),
-                0, 0, 0, height
-            )
+//            scroller.fling(
+//                0, 0,
+//                0, velocityY.toInt(),
+//                Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE
+//            )
+//            postOnAnimation(this::run)
             return false
+        }
+
+        fun run() {
+            //重新 computeScroll 方法，并在内部完成平滑滚动逻辑
+            //判断滚动操作是否完成了，如果没有完成就继续滚动
+            if (scroller.computeScrollOffset()) {
+                val y = scroller.currY
+                val dy = y - mLastFlingY
+                mLastFlingY = y
+                constrainScrollBy(0, -dy)
+                postOnAnimation(this::run)
+            }
+        }
+
+        private fun constrainScrollBy(x: Int, y: Int) {
+            var dx = x
+            var dy = y
+            val viewport = Rect()
+            getGlobalVisibleRect(viewport)
+            val height: Int = viewport.height()
+            val width: Int = viewport.width()
+            val scrollX = scrollX
+            val scrollY = scrollY
+
+            //右边界
+            if (mWidth - scrollX - dx < width) {
+                dx = mWidth - scrollX - width
+            }
+            //左边界
+            if (-scrollX - dx > 0) {
+                dx = -scrollX
+            }
+            //下边界
+            if (mHeight - scrollY - dy < height) {
+                dy = mHeight - scrollY - height
+            }
+            //上边界
+            if (scrollY + dy < 0) {
+                dy = -scrollY
+            }
+            scrollBy(dx, dy)
         }
 
         override fun onLongPress(e: MotionEvent?) {
@@ -261,29 +345,4 @@ class ScrollerLayout : ViewGroup {
     }
 
 
-    override fun computeScroll() {
-        //重新 computeScroll 方法，并在内部完成平滑滚动逻辑
-        //判断滚动操作是否完成了，如果没有完成就继续滚动
-        if (scroller.computeScrollOffset()) {
-
-            var y = 0;
-            y =
-                if (mYDown > mYUp) {
-                    if (scrollY + scroller.startY < childCount * getChildAt(0).measuredHeight) {
-                        scrollY + scroller.startY
-                    } else {
-                        childCount * getChildAt(0).measuredHeight
-                    }
-                } else {
-                    if (scrollY - scroller.startY > 0) {
-                        scrollY - scroller.startY
-                    } else {
-                        0
-                    }
-                }
-//            scroller.startY
-            scrollTo(scroller.currX, y)
-            invalidate()
-        }
-    }
 }

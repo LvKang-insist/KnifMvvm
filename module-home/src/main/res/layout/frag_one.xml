@@ -168,9 +168,9 @@
     <!--        android:layout_width="match_parent"-->
     <!--        android:layout_height="match_parent" />-->
 
-    <com.business.tools.views.page.ScrollerLayout
-        android:id="@+id/scroll"
+    <com.standalone.core.ui.view.MultiTouchView2
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="match_parent" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
