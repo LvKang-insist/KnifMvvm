@@ -10,6 +10,9 @@ import android.view.View
 import com.standalone.core.ui.dp2px
 import com.standalone.core.ui.getAvatar
 
+/**
+ * 配合型
+ */
 class MultiTouchView2(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
     val bitmap = getAvatar(resources, dp2px(200f).toInt())
