@@ -1,8 +1,6 @@
 package com.example.home
 
 import com.example.library_core.single.SingleApplication
-import dagger.hilt.android.HiltAndroidApp
-
 /**
  * @author 345 QQ:1831712732
  * @name BaseApplication
@@ -11,7 +9,6 @@ import dagger.hilt.android.HiltAndroidApp
  * @description
  */
 
-@HiltAndroidApp
 class HomeApplication : SingleApplication() {
 
 }

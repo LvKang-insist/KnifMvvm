@@ -3,8 +3,6 @@ package com.example.module_home.navigation
 import com.example.library_core.net.ApiServices
 import com.lvhttp.net.LvHttp
 import com.standalone.core.base.model.BaseRepository
-import dagger.hilt.android.scopes.ActivityScoped
-import javax.inject.Inject
 
 /**
  * @name TestModel
@@ -14,8 +12,7 @@ import javax.inject.Inject
  * @description
  */
 
-@ActivityScoped
-class HomeContentRepository @Inject constructor() : BaseRepository() {
+class HomeContentRepository  constructor() : BaseRepository() {
 
     suspend fun requestBaidu(): String {
         return LvHttp.createApi(ApiServices::class.java).baidu()

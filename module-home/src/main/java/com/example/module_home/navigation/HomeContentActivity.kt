@@ -2,24 +2,15 @@ package com.example.module_home.navigation
 
 
 import android.view.View
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
-import com.hjq.toast.ToastUtils
 import com.example.module_home.R
-import com.example.module_home.navigation.one.FragOneViewModel
 import com.gyf.immersionbar.ImmersionBar
-import com.standalone.core.base.ui.activity.BaseActivity
 import com.standalone.core.base.ui.activity.BaseLayoutActivity
 import com.standalone.core.base.ui.activity.BaseSkinActivity
 import com.xiaojinzi.component.anno.RouterAnno
-import dagger.hilt.android.AndroidEntryPoint
 
 
-@RouterAnno(path = "home_navigation")
-@AndroidEntryPoint
-class HomeContentActivity : BaseSkinActivity<HomeContentViewModel>() {
+class HomeContentActivity : BaseLayoutActivity<HomeContentViewModel>() {
 
     /*   override fun setViewModel(): Class<HomeContentViewModel> = HomeContentViewModel::class.java
    */

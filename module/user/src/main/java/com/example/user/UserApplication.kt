@@ -1,7 +1,6 @@
 package com.example.user
 
 import com.example.library_core.single.SingleApplication
-import dagger.hilt.android.HiltAndroidApp
 
 /**
  * @name UserApplication
@@ -11,6 +10,5 @@ import dagger.hilt.android.HiltAndroidApp
  * @description
  */
 
-@HiltAndroidApp
 class UserApplication : SingleApplication() {
 }

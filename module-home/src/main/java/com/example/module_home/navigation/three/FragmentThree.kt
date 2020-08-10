@@ -4,10 +4,8 @@ import android.view.View
 import androidx.navigation.Navigation
 import com.example.module_home.R
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.frag_three.*
 
-@AndroidEntryPoint
 class FragmentThree : BaseLayoutFragment<FragThreeViewModel>() {
     override fun createViewModel(): Class<FragThreeViewModel>? = FragThreeViewModel::class.java
 

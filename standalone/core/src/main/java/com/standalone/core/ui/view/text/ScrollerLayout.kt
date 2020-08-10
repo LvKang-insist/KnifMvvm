@@ -257,7 +257,7 @@ class ScrollerLayout : ViewGroup {
 //                    }
 //                    scroller.startScroll(0, mYUp.toInt(), 0, 1000)
 
-                    scrollBy(0, 1000)
+//                    scrollBy(0, 1000)
 
 //                    mLastFlingY = scrollY
 //                    mPosition = targetIndex - 1
@@ -268,14 +268,14 @@ class ScrollerLayout : ViewGroup {
         }
 
         override fun onFling(
-            e1: MotionEvent?, event: MotionEvent?, velocityX: Float, velocityY: Float
+            e1: MotionEvent?, event: MotionEvent, velocityX: Float, velocityY: Float
         ): Boolean {
-//            scroller.fling(
-//                0, 0,
-//                0, velocityY.toInt(),
-//                Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE
-//            )
-//            postOnAnimation(this::run)
+            scroller.fling(
+                0, event.y.toInt(),
+                0, velocityY.toInt(),
+                Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE
+            )
+            postOnAnimation(this::run)
             return false
         }
 

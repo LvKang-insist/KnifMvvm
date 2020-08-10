@@ -7,10 +7,9 @@ import androidx.navigation.Navigation
 import com.example.module_home.*
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.standalone.core.ui.view.text.PageAdapter
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.frag_one.*
 
-@AndroidEntryPoint
+
 class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
 
     override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java

@@ -1,8 +1,6 @@
 package com.example.admin
 
 import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
 
 /**
@@ -12,12 +10,7 @@ import javax.inject.Inject
  * @time 2020/5/7 22:53
  * @description
  */
-//https://juejin.im/post/5ef2f31951882565a94e06a5#heading-0
-@HiltAndroidApp
 class BaseApplication : Application() {
 
 
-    override fun onCreate() {
-        super.onCreate()
-    }
 }
