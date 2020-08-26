@@ -1,5 +1,6 @@
 package com.example.module_home
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.lvhttp.net.launch.launchVmHttp
 import com.standalone.core.base.viewmodel.BaseViewModel
@@ -28,5 +29,10 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    fun onStart(){
+        Log.e("-------->", "onstart")
+    }
 }
 
