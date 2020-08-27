@@ -32,7 +32,7 @@ class HomeViewModel : BaseViewModel() {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onStart(){
-        Log.e("-------->", "onstart")
+        Log.e("-------->", "onStart")
     }
 }
 

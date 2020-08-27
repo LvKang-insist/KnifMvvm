@@ -1,6 +1,7 @@
 package com.example.module_user
 
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.standalone.core.base.ui.activity.skin.SkinManager
 import com.standalone.core.base.ui.activity.skin.config.SkinPreUtils
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
@@ -16,12 +17,13 @@ import kotlinx.android.synthetic.main.user_frag.*
  */
 
 @FragmentAnno("user-fragment")
-class UserFragment : BaseLayoutFragment<UserViewModel>() {
+class UserFragment : BaseLayoutFragment() {
 
-    override fun createViewModel(): Class<UserViewModel> = UserViewModel::class.java
+    val userViewModel by viewModels<UserViewModel>()
+
 
     override fun isDark(): Boolean {
-        return false
+        return true
     }
 
     override fun isImmersionBar(): Boolean {

@@ -1,5 +1,6 @@
 package com.standalone.core.base.ui.frag
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
@@ -14,18 +15,13 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @description 以普通的形式加载 fragment，拒绝使用 dataBinding
  */
 
-abstract class BaseLayoutFragment<VM : BaseViewModel> : BaseFragment<VM>() {
+abstract class BaseLayoutFragment : BaseFragment() {
 
-    override fun initView(container: ViewGroup?): View {
+    abstract fun layout(): Int
 
-        viewModel.run {
-            //默认实现 Toast
-            getFinally().observe(this@BaseLayoutFragment, Observer {
-                ToastUtils.show(it)
-            })
-        }
+    override fun initView(inflater: LayoutInflater, container: ViewGroup?): View {
 
-        return mLayoutInflater.inflate(layout(), container, false)
+        return inflater.inflate(layout(), container, false)
     }
 
 }

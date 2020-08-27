@@ -1,6 +1,7 @@
 package com.example.module_home.navigation.two
 
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elvishew.xlog.XLog
 import com.example.library_core.storage.dao.UserDao
@@ -8,10 +9,12 @@ import com.example.module_home.R
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
 
 
-class FragmentTwo : BaseLayoutFragment<FragTwoViewModel>() {
+class FragmentTwo : BaseLayoutFragment() {
 
 
-    override fun createViewModel(): Class<FragTwoViewModel>? = FragTwoViewModel::class.java
+
+    val vm by viewModels<FragTwoViewModel>()
+
 
     override fun isImmersionBar(): Boolean {
         return true

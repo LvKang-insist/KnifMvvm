@@ -17,29 +17,21 @@ import com.gyf.immersionbar.ImmersionBar
 import com.standalone.core.R
 import com.standalone.core.base.viewmodel.BaseViewModel
 
-abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
+abstract class BaseFragment : Fragment() {
 
     private var isLazyLoad = false
 
-    lateinit var viewModel: VM
-
     lateinit var rootView: View
-
-    val mLayoutInflater: LayoutInflater by lazy {
-        LayoutInflater.from(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        viewModel = setViewModel()
-        lifecycle.addObserver(viewModel)
-        rootView = initView(container)
+        rootView = initView(inflater, container)
         return rootView
     }
 
 
-    abstract fun initView(container: ViewGroup?): View
+    abstract fun initView(inflater: LayoutInflater, container: ViewGroup?): View
 
     override fun onResume() {
         super.onResume()
@@ -55,19 +47,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         context?.startActivity(Intent(context, clazz))
     }
 
-
-    private fun setViewModel(): VM {
-        val viewModel = createViewModel()
-        return if (viewModel != null) {
-            ViewModelProvider(this).get(viewModel)
-        } else {
-            val stateViewModel = createStateViewModel()
-                ?: throw NullPointerException("$this ---> ViewModel 为 null")
-            ViewModelProvider(
-                this, SavedStateViewModelFactory(requireActivity().application, this)
-            ).get(stateViewModel)
-        }
-    }
 
     open fun initBar() {
         if (isImmersionBar()) {
@@ -105,22 +84,6 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
         return View.NO_ID
     }
 
-    /**
-     * 设置 ViewModel此，
-     * 方法默认必须实现，结果可为 null
-     * 为 null 时则调用下面的方法
-     */
-    abstract fun createViewModel(): Class<VM>?
-
-    /**
-     * 带数据恢复的 ViewModel，可通过 savedStateHandler 进行设置
-     */
-    open fun createStateViewModel(): Class<VM>? = null
-
-    /**
-     * 加载布局
-     */
-    abstract fun layout(): Int
 
     /**
      * 逻辑处理

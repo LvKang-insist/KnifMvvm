@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.Intent.ACTION_VIEW
 import android.view.View
 import androidx.core.net.toUri
+import androidx.fragment.app.viewModels
 import com.example.library_core.storage.dao.UserDao
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
@@ -19,12 +20,12 @@ import kotlinx.android.synthetic.main.sort_frag.*
  */
 
 @FragmentAnno("sort-fragment")
-class SortFragment : BaseLayoutFragment<SortViewModel>() {
+class SortFragment : BaseLayoutFragment() {
 
 
     lateinit var userDao: UserDao
 
-    override fun createViewModel(): Class<SortViewModel> = SortViewModel::class.java
+    val sortViewModel by viewModels<SortViewModel>()
 
     override fun isImmersionBar(): Boolean {
         return true

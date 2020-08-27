@@ -3,6 +3,7 @@ package com.example.module_home.navigation.one
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.module_home.*
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
@@ -10,9 +11,10 @@ import com.standalone.core.ui.view.text.PageAdapter
 import kotlinx.android.synthetic.main.frag_one.*
 
 
-class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
+class FragmentOne : BaseLayoutFragment() {
 
-    override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java
+
+    val vm by viewModels<FragOneViewModel>()
 
 
     override fun layout(): Int {

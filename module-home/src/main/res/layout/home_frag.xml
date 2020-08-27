@@ -7,6 +7,9 @@
             name="data"
             type="String" />
 
+        <variable
+            name="vm"
+            type="com.example.module_home.HomeViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,7 +17,6 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:orientation="vertical">
-
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
+            android:onClick="@{()->vm.login()}"
             android:text="@{data==null?`点击获取数据`:data}"
             android:textColor="@color/black"
             android:textSize="20sp" />

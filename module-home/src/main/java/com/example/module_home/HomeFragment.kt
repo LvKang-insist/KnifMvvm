@@ -3,6 +3,7 @@ package com.example.module_home
 import android.content.Intent
 import android.graphics.Paint
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.hjq.toast.ToastUtils
@@ -10,6 +11,7 @@ import com.standalone.core.base.ui.frag.BaseBindingFragment
 import com.example.module_home.databinding.HomeFragBinding
 import com.example.module_home.navigation.HomeContentActivity
 import com.example.module_home.navigation.one.FragOneViewModel
+import com.standalone.core.utils.DataBindingConfig
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.home_frag.*
 
@@ -23,19 +25,16 @@ import kotlinx.android.synthetic.main.home_frag.*
  */
 
 @FragmentAnno("HomeFragment")
-class HomeFragment : BaseBindingFragment<HomeFragBinding, FragOneViewModel>() {
+class HomeFragment : BaseBindingFragment<HomeFragBinding>() {
 
-
-    override fun createViewModel(): Class<FragOneViewModel>? = FragOneViewModel::class.java
 
     val homeViewModel by viewModels<HomeViewModel>()
 
-    override fun isImmersionBar(): Boolean {
-        return true
-    }
 
-    override fun layout(): Int {
-        return R.layout.home_frag
+    override fun setDataBindingConfig(): DataBindingConfig {
+        return DataBindingConfig(R.layout.home_frag)
+            .addParams(BR.data, "点击")
+            .addParams(BR.vm, homeViewModel)
     }
 
     override fun bindView() {
@@ -48,14 +47,15 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding, FragOneViewModel>() {
             startActivity(Intent(context, HomeContentActivity::class.java))
         }
 
-
-        request.setOnClickListener {
-            homeViewModel.login()
-        }
         homeViewModel.loginObserver.observe(this, Observer {
             ToastUtils.show(it)
             binding.data = it
         })
+
+        home.setOnClickListener() { v: View ->
+
+        }
+
     }
 
 }

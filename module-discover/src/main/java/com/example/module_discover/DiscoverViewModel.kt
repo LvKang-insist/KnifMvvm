@@ -1,6 +1,9 @@
 package com.example.module_discover
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
+import com.hjq.toast.ToastUtils
 import com.standalone.core.base.viewmodel.BaseViewModel
 
 /**
@@ -11,5 +14,20 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @description
  */
 class DiscoverViewModel : BaseViewModel() {
+
+
+    private val discoverLiveData by lazy { MutableLiveData<TestBean>() }
+    val discoverLiveDataObserver: LiveData<TestBean> = discoverLiveData
+
+    var bean: TestBean = TestBean()
+
+    fun requestBean() {
+        bean.sum.set(0)
+        discoverLiveData.postValue(bean)
+    }
+
+    fun addSum() {
+        bean.addSum()
+    }
 
 }
