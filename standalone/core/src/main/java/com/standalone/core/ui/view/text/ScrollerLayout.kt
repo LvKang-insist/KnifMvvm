@@ -2,8 +2,6 @@ package com.standalone.core.ui.view.text
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.*
 import android.widget.OverScroller
@@ -90,6 +88,13 @@ class ScrollerLayout : ViewGroup {
 
     var childHeight = 0
 
+
+    var mVelocityTracker: VelocityTracker = VelocityTracker.obtain()
+
+
+    var mMaximumFlingVelocity:Int = 0
+    var mMinimumFlingVelocity:Int = 0
+
     /**
      * 适配器
      */
@@ -107,6 +112,14 @@ class ScrollerLayout : ViewGroup {
 
         //让当前view 可以点击
         isClickable = true
+
+
+        val configuration = ViewConfiguration.get(getContext())
+        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration)
+        mMinimumFlingVelocity = configuration.scaledMinimumFlingVelocity
+        mMaximumFlingVelocity =
+            configuration.scaledMaximumFlingVelocity / 8
+
     }
 
 
@@ -222,6 +235,7 @@ class ScrollerLayout : ViewGroup {
         override fun onScroll(
             e1: MotionEvent?, event: MotionEvent, distanceX: Float, distanceY: Float
         ): Boolean {
+            mVelocityTracker.addMovement(event)
             when (event.action) {
                 MotionEvent.ACTION_MOVE -> {
                     mYMove = event.rawY
@@ -236,11 +250,18 @@ class ScrollerLayout : ViewGroup {
                         return true
                     }
                     //移动
-                    constrainScrollBy(0, scrolledY)
+
                     mYLastMove = mYMove
                 }
                 MotionEvent.ACTION_UP -> {
-                    mYUp = event.rawY
+
+
+                    val velocity = mVelocityTracker
+                    velocity.computeCurrentVelocity(1000,mMaximumFlingVelocity.toFloat())
+
+
+
+
                     //当手指抬起时，根据当前滚动值来判定应该滚动到那个子控件界面
 //                //计算收松开后要显示的页面 index
 ////                targetIndex = if (mYDown > event.rawY) {
@@ -267,58 +288,15 @@ class ScrollerLayout : ViewGroup {
             return false
         }
 
+
         override fun onFling(
             e1: MotionEvent?, event: MotionEvent, velocityX: Float, velocityY: Float
         ): Boolean {
-            scroller.fling(
-                0, event.y.toInt(),
-                0, velocityY.toInt(),
-                Integer.MIN_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE
-            )
-            postOnAnimation(this::run)
+
             return false
         }
 
-        fun run() {
-            //重新 computeScroll 方法，并在内部完成平滑滚动逻辑
-            //判断滚动操作是否完成了，如果没有完成就继续滚动
-            if (scroller.computeScrollOffset()) {
-                val y = scroller.currY
-                val dy = y - mLastFlingY
-                mLastFlingY = y
-                constrainScrollBy(0, -dy)
-                postOnAnimation(this::run)
-            }
-        }
 
-        private fun constrainScrollBy(x: Int, y: Int) {
-            var dx = x
-            var dy = y
-            val viewport = Rect()
-            getGlobalVisibleRect(viewport)
-            val height: Int = viewport.height()
-            val width: Int = viewport.width()
-            val scrollX = scrollX
-            val scrollY = scrollY
-
-            //右边界
-            if (mWidth - scrollX - dx < width) {
-                dx = mWidth - scrollX - width
-            }
-            //左边界
-            if (-scrollX - dx > 0) {
-                dx = -scrollX
-            }
-            //下边界
-            if (mHeight - scrollY - dy < height) {
-                dy = mHeight - scrollY - height
-            }
-            //上边界
-            if (scrollY + dy < 0) {
-                dy = -scrollY
-            }
-            scrollBy(dx, dy)
-        }
 
         override fun onLongPress(e: MotionEvent?) {
 

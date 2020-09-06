@@ -40,5 +40,11 @@
             android:textColor="@color/black"
             android:textSize="20sp" />
 
+
+        <com.standalone.core.ui.view.text.ScrollerLayout
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

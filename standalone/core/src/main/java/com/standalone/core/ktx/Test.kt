@@ -7,7 +7,6 @@ fun a(sum: Int) {
 
 }
 
-class Test(var name: String)
 
 fun main() {
 

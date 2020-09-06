@@ -3,6 +3,7 @@ package com.example.module_home
 import android.content.Intent
 import android.graphics.Paint
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import com.standalone.core.base.ui.frag.BaseBindingFragment
 import com.example.module_home.databinding.HomeFragBinding
 import com.example.module_home.navigation.HomeContentActivity
 import com.example.module_home.navigation.one.FragOneViewModel
+import com.standalone.core.ui.view.text.PageAdapter
 import com.standalone.core.utils.DataBindingConfig
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.home_frag.*
@@ -55,6 +57,23 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding>() {
         home.setOnClickListener() { v: View ->
 
         }
+
+
+        scroll.adapter = ScrollAdapter()
+    }
+
+
+    class ScrollAdapter : PageAdapter(R.layout.sort_rv_item) {
+        override fun count(): Int {
+            return 10
+        }
+
+        override fun view(view: View, position: Int) {
+            val tv:AppCompatTextView = view as AppCompatTextView
+
+            tv.text = "$position"
+        }
+
 
     }
 
