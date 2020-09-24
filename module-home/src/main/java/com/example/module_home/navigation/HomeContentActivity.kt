@@ -1,10 +1,12 @@
 package com.example.module_home.navigation
 
 
+import android.graphics.Color
 import android.view.View
 import androidx.navigation.fragment.NavHostFragment
 import com.example.module_home.R
 import com.gyf.immersionbar.ImmersionBar
+import com.gyf.immersionbar.ktx.immersionBar
 import com.standalone.core.base.ui.activity.BaseLayoutActivity
 import com.standalone.core.base.ui.activity.BaseSkinActivity
 import com.xiaojinzi.component.anno.RouterAnno
@@ -24,8 +26,12 @@ class HomeContentActivity : BaseLayoutActivity<HomeContentViewModel>() {
         return R.id.toolbar
     }
 
+    override fun isImmersionBar(): Boolean {
+        return false
+    }
+
     override fun toolbarTitle(): String? {
-        return "Navigation 导航"
+        return "Activity"
     }
 
     override fun layout(): Int = R.layout.activity_home_content
@@ -33,11 +39,24 @@ class HomeContentActivity : BaseLayoutActivity<HomeContentViewModel>() {
 
     override fun bindView() {
 
-        ImmersionBar.with(this)
-            .statusBarDarkFont(false)
-            .titleBar(findViewById<View>(R.id.toolbar))
-            .init()
+//        ImmersionBar.with(this)
+//            .transparentStatusBar()
+//            .statusBarDarkFont(true)
+//            .fitsSystemWindows(true)
+//            .init()
 
+        immersionBar {
+            transparentStatusBar()
+            fullScreen(false)
+            navigationBarColor(android.R.color.white)
+            keyboardEnable(true)
+            navigationBarDarkIcon(true)
+            statusBarDarkFont(true)
+            fitsSystemWindows(true)
+        }
+
+
+        isImmersionBar()
 
 //        viewModel.saveCurrentValue("345", "销毁前的数据")
 //
@@ -46,12 +65,12 @@ class HomeContentActivity : BaseLayoutActivity<HomeContentViewModel>() {
 //        })
 
 
-        val navHost = NavHostFragment.create(R.navigation.home_graph)
+        /*val navHost = NavHostFragment.create(R.navigation.home_graph)
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.home_content, navHost) // 相等于 xml 中的 app:defaultNavHost="true"
             .setPrimaryNavigationFragment(navHost)
-            .commit()
+            .commit()*/
     }
 
 

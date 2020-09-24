@@ -9,7 +9,7 @@ import com.standalone.core.ui.view.RoundViewHelper.Companion.setViewOutLine
  * 圆角 LinearLayout
  */
 class RoundLinearLayout @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayoutCompat(context, attrs, defStyleAttr) {

@@ -54,11 +54,6 @@ class HomeFragment : BaseBindingFragment<HomeFragBinding>() {
             binding.data = it
         })
 
-        home.setOnClickListener() { v: View ->
-
-        }
-
-
         scroll.adapter = ScrollAdapter()
     }
 

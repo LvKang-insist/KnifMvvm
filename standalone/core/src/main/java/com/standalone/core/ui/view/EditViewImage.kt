@@ -20,7 +20,7 @@ class EditViewImage : AppCompatEditText {
     private var mBottomWidth = 0
     private var mBottomHeight = 0
 
-    constructor(context: Context?) : super(context) {}
+    constructor(context: Context) : super(context) {}
     constructor(context: Context, attrs: AttributeSet) : super(
         context,
         attrs

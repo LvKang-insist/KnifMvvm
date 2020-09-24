@@ -9,7 +9,7 @@ import com.standalone.core.ui.view.RoundViewHelper.Companion.setViewOutLine
  * 圆角 Button
  */
 class RoundButton @JvmOverloads constructor(
-    context: Context?,
+    context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : AppCompatButton(context, attrs, defStyleAttr) {
