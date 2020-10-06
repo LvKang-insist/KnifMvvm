@@ -27,13 +27,9 @@ class SortFragment : BaseLayoutFragment() {
 
     val sortViewModel by viewModels<SortViewModel>()
 
-    override fun isImmersionBar(): Boolean {
-        return true
-    }
+    override fun isImmersionBar(): Boolean  = true
 
-    override fun isDark(): Boolean {
-        return false
-    }
+    override fun isBarDark(): Boolean = false
 
     override fun layout(): Int {
         return R.layout.sort_frag

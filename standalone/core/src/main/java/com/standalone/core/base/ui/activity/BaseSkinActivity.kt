@@ -33,7 +33,7 @@ import org.xmlpull.v1.XmlPullParser
  * @description 换肤
  */
 
-abstract class BaseSkinActivity<VM : BaseViewModel> : BaseActivity<VM>(),
+abstract class BaseSkinActivity :BaseActivity(),
     LayoutInflater.Factory2, ISkinChangeListener {
 
     private var mAppCompatViewInflater: SkinAppCompatViewInflater? = null

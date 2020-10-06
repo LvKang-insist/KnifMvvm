@@ -12,7 +12,7 @@ import com.tencent.mmkv.MMKV
 import java.util.*
 
 /**
- * @name UtilsInitalizer
+ * @name UtilsInitializer
  * @package com.lv.admin
  * @author 345 QQ:1831712732
  * @time 2020/6/30 23:30
@@ -42,6 +42,8 @@ object UtilsInit {
 
         //初始化项目配置
         Latte.init(application)
+            .withImmersionBar()
+            .configure()
 
         //初始化 Toast
         ToastUtils.init(application)

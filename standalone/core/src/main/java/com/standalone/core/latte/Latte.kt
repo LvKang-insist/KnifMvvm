@@ -1,6 +1,7 @@
 package com.standalone.core.latte
 
 import android.app.Application
+import com.gyf.immersionbar.ImmersionBar
 
 /**
  * @name Latte
@@ -29,6 +30,14 @@ object Latte {
      */
     fun <T> getValue(key: LatteConfigKeys): T {
         return LatteConfigurator.getConfigurator(key) as T
+    }
+
+
+    /**
+     * 获取默认的状态栏配置
+     */
+    fun getImmersionBar(): (ImmersionBar.() -> Unit?)? {
+        return LatteConfigurator.getConfiguratorNull(LatteConfigKeys.CONFIG_IMMERSION)
     }
 
 }

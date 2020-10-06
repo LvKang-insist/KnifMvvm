@@ -27,9 +27,7 @@ class DiscoverFragment : BaseBindingFragment<DiscoverFragBinding>() {
         return true
     }
 
-    override fun isDark(): Boolean {
-        return false
-    }
+    override fun isBarDark(): Boolean = true
 
     override fun bindView() {
         viewModel.requestBean()

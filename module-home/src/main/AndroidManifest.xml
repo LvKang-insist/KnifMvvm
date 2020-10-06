@@ -1,11 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.module_home">
 
-
     <application>
-        <activity android:name="com.example.module_home.navigation.HomeContentActivity">
-            <nav-graph android:value="@navigation/home_graph"/>
-        </activity>
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".navigation.HomeContentActivity"></activity>
     </application>
 
 </manifest>

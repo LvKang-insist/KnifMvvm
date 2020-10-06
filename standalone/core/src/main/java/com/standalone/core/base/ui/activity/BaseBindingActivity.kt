@@ -1,10 +1,12 @@
 package com.standalone.core.base.ui.activity
 
 import android.widget.Toast
+import androidx.core.util.forEach
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.standalone.core.base.viewmodel.BaseViewModel
+import com.standalone.core.utils.DataBindingConfig
 
 /**
  * @name BaseBindingActivity
@@ -14,20 +16,20 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @description BaseBindingActivity：如果需要使用 DataBinding，可以继承自此类。
  *
  */
-abstract class BaseBindingActivity<V : ViewDataBinding, VM : BaseViewModel> :
-    BaseSkinActivity<VM>() {
+abstract class BaseBindingActivity<V : ViewDataBinding> :
+    BaseSkinActivity() {
 
     lateinit var binding: V
 
     override fun initView() {
-
-        binding = DataBindingUtil.setContentView<V>(this, layout())
-
-        viewModel.run {
-            getFinally().observe(this@BaseBindingActivity, Observer {
-                Toast.makeText(this@BaseBindingActivity, it, Toast.LENGTH_LONG).show()
-            })
+        val dataBindingConfig = setDataBindingConfig()
+        binding = DataBindingUtil.setContentView(this, dataBindingConfig.layout)
+        dataBindingConfig.bindParams.forEach { key, value ->
+            binding.setVariable(key, value)
         }
     }
+
+    abstract fun setDataBindingConfig(): DataBindingConfig
+
 
 }

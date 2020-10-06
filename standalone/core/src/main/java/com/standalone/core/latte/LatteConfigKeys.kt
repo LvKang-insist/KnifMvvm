@@ -18,4 +18,9 @@ enum class LatteConfigKeys {
      * 配置完成
      */
     CONFIG_READER,
+
+    /**
+     * 状态栏
+     */
+    CONFIG_IMMERSION
 }

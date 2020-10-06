@@ -22,9 +22,7 @@ class UserFragment : BaseLayoutFragment() {
     val userViewModel by viewModels<UserViewModel>()
 
 
-    override fun isDark(): Boolean {
-        return true
-    }
+    override fun isBarDark(): Boolean= false
 
     override fun isImmersionBar(): Boolean {
         return true

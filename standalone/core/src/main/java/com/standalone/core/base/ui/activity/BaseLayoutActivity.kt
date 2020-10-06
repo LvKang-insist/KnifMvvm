@@ -1,6 +1,6 @@
 package com.standalone.core.base.ui.activity
 
-import android.widget.Toast
+import android.view.View
 import androidx.lifecycle.Observer
 import com.hjq.toast.ToastUtils
 import com.standalone.core.base.viewmodel.BaseViewModel
@@ -13,17 +13,19 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @description
  */
 
-abstract class BaseLayoutActivity<VM : BaseViewModel> : BaseSkinActivity<VM>() {
+abstract class BaseLayoutActivity : BaseSkinActivity() {
 
     override fun initView() {
-        super.initView()
-
-        viewModel.run {
-            //默认实现 Toast
-            getFinally().observe(this@BaseLayoutActivity, Observer {
-                ToastUtils.show(it)
-            })
+        when {
+            layout() != View.NO_ID -> {
+                setContentView(layout())
+            }
+            else -> {
+                throw NullPointerException("布局初始化异常")
+            }
         }
     }
+
+    abstract fun layout(): Int
 
 }

@@ -16,9 +16,7 @@ class FragmentThree : BaseLayoutFragment() {
         return true
     }
 
-    override fun isDark(): Boolean {
-        return false
-    }
+
 
     override fun layout(): Int {
         return R.layout.frag_three

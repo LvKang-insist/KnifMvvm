@@ -20,8 +20,14 @@ abstract class BaseLayoutFragment : BaseFragment() {
     abstract fun layout(): Int
 
     override fun initView(inflater: LayoutInflater, container: ViewGroup?): View {
-
-        return inflater.inflate(layout(), container, false)
+        when {
+            layout() != View.NO_ID -> {
+                return inflater.inflate(layout(), container, false)
+            }
+            else -> {
+                throw NullPointerException("布局初始化异常")
+            }
+        }
     }
 
 }

@@ -10,13 +10,15 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.standalone.core.base.ui.activity.BaseBindingActivity
-import com.standalone.core.base.viewmodel.BaseViewModel
+import com.standalone.core.ui.EventMessage
+import com.standalone.core.utils.DataBindingConfig
 import com.standalone.core.utils.GlideUtils
 import com.standalone.main.R
 import com.standalone.main.bottom.BottomTabBean
 import com.standalone.main.bottom.ItemBuilder
 import com.standalone.main.bottom.MainContentAdapter
 import kotlinx.android.synthetic.main.bottom_activity.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * @name BaseMainTabItemActivity
@@ -25,8 +27,8 @@ import kotlinx.android.synthetic.main.bottom_activity.*
  * @time 2020/5/8 23:03
  * @description tab 管理类
  */
-abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> :
-    BaseBindingActivity<V, VM>(), View.OnClickListener {
+abstract class BaseMainTabItemActivity<V : ViewDataBinding> :
+    BaseBindingActivity<V>(), View.OnClickListener {
 
     /**
      * 导航 Fragment
@@ -61,15 +63,14 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
 
     private var isVpScroll = false
 
+    override fun setDataBindingConfig(): DataBindingConfig =
+        DataBindingConfig(R.layout.bottom_activity)
+
     private val mLayoutInflater by lazy { LayoutInflater.from(this) }
     private val mainContentAdapter by lazy {
         MainContentAdapter(supportFragmentManager, lifecycle, mFragments)
     }
 
-
-    override fun layout(): Int {
-        return R.layout.bottom_activity
-    }
 
     override fun bindView() {
         isScroll = isScroll()
@@ -89,14 +90,13 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
             if (i == mIndexPos) {
                 GlideUtils.load(itemIcon, bottomTabBean.selectIcon)
                 itemTitle.setTextColor(mSelectColor)
-                initBar(true)
+                upDataBar()
             }
         }
         bottom_vp_content.offscreenPageLimit = size
         bottom_vp_content.adapter = mainContentAdapter
         bottom_vp_content.currentItem = mIndexPos
         bottom_vp_content.isUserInputEnabled = isScroll
-//        bottom_vp_content.setPagerEnabled(isScroll)
 
         bottom_vp_content.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -119,10 +119,6 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
         }
     }
 
-    override fun isImmersionBar(): Boolean {
-        return false
-    }
-
 
     abstract fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment>
 
@@ -131,6 +127,8 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
     abstract fun setSelectColor(): Int
 
     open fun isScroll(): Boolean = false
+
+    override fun isImmersionBar(): Boolean = true
 
     override fun onClick(v: View) {
         val pos = v.tag as Int
@@ -145,6 +143,7 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
         val bottomTabBean = mTabBeans[pos]
         GlideUtils.load(itemIcon, bottomTabBean.selectIcon)
         itemTitle.setTextColor(mSelectColor)
+        sendEvent(pos)
     }
 
 
@@ -152,6 +151,16 @@ abstract class BaseMainTabItemActivity<V : ViewDataBinding, VM : BaseViewModel> 
         isVpScroll = true
         setScrollTab(pos)
         bottom_vp_content.setCurrentItem(pos, false)
+    }
+
+
+    private fun sendEvent(page:Int){
+        when(page){
+            0 -> EventBus.getDefault().post(EventMessage(EventMessage.Type.CLICK_HOME))
+            1 -> EventBus.getDefault().post(EventMessage(EventMessage.Type.CLICK_DISCOVER))
+            2 -> EventBus.getDefault().post(EventMessage(EventMessage.Type.CLICK_SORT))
+            3 -> EventBus.getDefault().post(EventMessage(EventMessage.Type.CLICK_USER))
+        }
     }
 
     private fun defaultTab() {

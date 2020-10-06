@@ -1,12 +1,14 @@
 package com.example.base_main.activity
 
 import android.graphics.Color
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import com.standalone.core.base.viewmodel.MainViewModel
 import com.example.base_main.R
 import com.standalone.main.bottom.BottomTabBean
 import com.standalone.main.bottom.ItemBuilder
 import com.standalone.main.bottom.base.BaseMainTabItemActivity
+import com.standalone.main.databinding.BottomActivityBinding
 import com.standalone.main.databinding.BottomActivityBindingImpl
 import com.xiaojinzi.component.impl.Router
 
@@ -18,9 +20,10 @@ import com.xiaojinzi.component.impl.Router
  * @description
  */
 //@AndroidEntryPoint
-class MainActivity : BaseMainTabItemActivity<BottomActivityBindingImpl, MainViewModel>() {
+class MainActivity : BaseMainTabItemActivity<BottomActivityBindingImpl>() {
 
-    override fun createViewModel(): Class<MainViewModel>? = MainViewModel::class.java
+
+    val viewModel by viewModels<MainViewModel>()
 
 
     override fun setItems(builder: ItemBuilder): LinkedHashMap<BottomTabBean, Fragment> {
