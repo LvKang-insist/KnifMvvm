@@ -7,7 +7,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.library_core.storage.bean.User
+import com.example.library_core.storage.bean.UserEntity
 import com.example.module_home.R
 
 /**
@@ -19,10 +19,10 @@ import com.example.module_home.R
  */
 
 class RvAdapter() :
-    PagedListAdapter<User, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<User>() {
-        override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem.name == newItem.name
+    PagedListAdapter<UserEntity, RecyclerView.ViewHolder>(object : DiffUtil.ItemCallback<UserEntity>() {
+        override fun areItemsTheSame(oldItem: UserEntity, newItem: UserEntity) = oldItem.name == newItem.name
 
-        override fun areContentsTheSame(oldItem: User, newItem: User) = oldItem == newItem
+        override fun areContentsTheSame(oldItem: UserEntity, newItem: UserEntity) = oldItem == newItem
 
     }) {
 

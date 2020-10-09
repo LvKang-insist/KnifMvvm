@@ -18,19 +18,12 @@ import androidx.room.*
  * @description User 表
  */
 @Entity(tableName = "user")
-class User(id: Int, name: String, age: Int) {
-
-    @PrimaryKey
-    var id: Int = 0
-
-    var name: String = ""
-    var age: Int = 0
-
-    init {
-        this.id = id
-        this.name = name
-        this.age = age
-    }
-
-
-}
+data class UserEntity(
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
+    var name: String,
+    var age: Int,
+    var love: String,
+    val ccc: String,
+    var sex: String
+)

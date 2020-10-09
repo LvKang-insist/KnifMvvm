@@ -5,10 +5,15 @@ import android.content.Intent.ACTION_VIEW
 import android.view.View
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
+import com.example.library_core.storage.AppDataBase
+import com.example.library_core.storage.DBManager
+import com.example.library_core.storage.bean.UserEntity
 import com.example.library_core.storage.dao.UserDao
 import com.standalone.core.base.ui.frag.BaseLayoutFragment
 import com.xiaojinzi.component.anno.FragmentAnno
 import kotlinx.android.synthetic.main.sort_frag.*
+import java.lang.StringBuilder
+import kotlin.random.Random
 
 
 /**
@@ -38,13 +43,23 @@ class SortFragment : BaseLayoutFragment() {
     override fun bindView() {
 
 
-        recycler.setOnClickListener {
             //深层链接，利用 uri 直接跳转到 FragmentThree 中
-            val intent = Intent(ACTION_VIEW)
-            intent.data = "home://www/frag3".toUri()
+//            val intent = Intent(ACTION_VIEW)
+//            intent.data = "home://www/frag3".toUri()
+//            startActivity(intent)
 
-            startActivity(intent)
 
+        tvInsist.setOnClickListener {
+            DBManager.insertUser(UserEntity(0,"夏军 ${Random(10).nextInt()}",20,"足球","殺殺殺","男"))
+        }
+
+        tvGetData.setOnClickListener {
+            val str = StringBuilder()
+            DBManager.queryUser().forEach {
+                str.append(it.toString())
+                    .append("\n")
+            }
+            tvGetData.text = str
         }
 
     }
