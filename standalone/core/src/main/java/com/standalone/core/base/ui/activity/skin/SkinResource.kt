@@ -12,7 +12,7 @@ import android.os.Build
 /**
  * 皮肤的资源管理器
  */
-@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@Suppress("RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "DEPRECATION")
 @SuppressLint("DiscouragedPrivateApi")
 class SkinResource(private val context: Context, private val skinPath: String) {
 
@@ -42,6 +42,7 @@ class SkinResource(private val context: Context, private val skinPath: String) {
     /**
      * 通过名字获取 Drawable
      */
+    @SuppressLint("UseCompatLoadingForDrawables")
     fun getDrawableByName(resName: String): Drawable? {
         return tryCatch {
             val resId = mSkinResource!!.getIdentifier(resName, "drawable", mPackageName)
@@ -52,6 +53,7 @@ class SkinResource(private val context: Context, private val skinPath: String) {
     /**
      * 通过名字获取颜色
      */
+    @SuppressLint("UseCompatLoadingForColorStateLists")
     fun getColorByName(resName: String): ColorStateList? {
         return tryCatch {
             val resId = mSkinResource!!.getIdentifier(resName, "color", mPackageName)

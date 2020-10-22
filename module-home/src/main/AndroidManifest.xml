@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.module_home">
+    package="com.lv.module_home">
 
     <application>
-        <activity android:name=".TestActivity"></activity>
-        <activity android:name=".navigation.HomeContentActivity"></activity>
+        <activity android:name="com.lv.module_home.TestActivity"></activity>
+        <activity android:name="com.lv.module_home.navigation.HomeContentActivity"></activity>
     </application>
 
 </manifest>

@@ -86,7 +86,7 @@ dependencies {
     api "androidx.startup:startup-runtime:1.0.0-beta01"
 
     // MMKV
-    api 'com.tencent:mmkv-static:1.2.0'
+//    api 'com.tencent:mmkv-static:1.2.0'
 
     //RecyclerView 的适配器依赖
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'

@@ -9,7 +9,7 @@
 
         <variable
             name="vm"
-            type="com.example.module_home.HomeViewModel" />
+            type="com.lv.module_home.HomeViewModel" />
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat

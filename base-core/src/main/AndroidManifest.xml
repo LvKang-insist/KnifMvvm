@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.library_core">
+    package="com.lv.library_core">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,18 +21,21 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge"
-            tools:replace="android:authorities"
-            >
+            tools:replace="android:authorities">
             <meta-data
-                android:name="com.example.library_core.startup.ComponentInitializer"
+                android:name="com.lv.library_core.startup.ComponentInitializer"
                 android:value="@string/androidx_startup" />
             <meta-data
-                android:name="com.example.library_core.startup.LvHttpInitializer"
+                android:name="com.lv.library_core.startup.LvHttpInitializer"
                 android:value="@string/androidx_startup" />
             <meta-data
-                android:name="com.example.library_core.startup.UtilsInitializer"
+                android:name="com.lv.library_core.startup.UtilsInitializer"
+                android:value="@string/androidx_startup" />
+            <meta-data
+                android:name="com.lv.library_core.startup.UMSDKInit"
                 android:value="@string/androidx_startup" />
         </provider>
+
 
     </application>
 

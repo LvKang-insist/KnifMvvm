@@ -1,3 +1,5 @@
+@file:Suppress("UNCHECKED_CAST")
+
 package com.standalone.core.ktx
 
 import android.app.Application
@@ -15,7 +17,7 @@ import java.lang.reflect.ParameterizedType
 
 
 private  val appViewModelProvider  by lazy {
-     ViewModelProvider(
+    ViewModelProvider(
         ViewModelStore(),
         ViewModelProvider.AndroidViewModelFactory.getInstance(Latte.getAppContext())
     )

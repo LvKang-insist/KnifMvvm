@@ -5,11 +5,11 @@
 
         <variable
             name="vm"
-            type="com.example.module_discover.DiscoverViewModel" />
+            type="com.lv.module_discover.DiscoverViewModel" />
 
         <variable
             name="bean"
-            type="com.example.module_discover.TestBean" />
+            type="com.lv.module_discover.TestBean" />
 
     </data>
 

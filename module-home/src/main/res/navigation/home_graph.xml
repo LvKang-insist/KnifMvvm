@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fragmentOne"
-        android:name="com.example.module_home.navigation.one.FragmentOne"
+        android:name="com.lv.module_home.navigation.one.FragmentOne"
         android:label="FragmentOne">
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
@@ -19,11 +19,11 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
-        android:name="com.example.module_home.navigation.two.FragmentTwo"
+        android:name="com.lv.module_home.navigation.two.FragmentTwo"
         android:label="FragmentTwo" />
     <fragment
         android:id="@+id/fragmentThree"
-        android:name="com.example.module_home.navigation.three.FragmentThree"
+        android:name="com.lv.module_home.navigation.three.FragmentThree"
         android:label="FragmentThree">
         <deepLink app:uri="home://www/frag3" />
     </fragment>
