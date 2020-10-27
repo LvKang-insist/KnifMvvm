@@ -15,7 +15,7 @@ import com.standalone.core.base.viewmodel.BaseViewModel
 
 class HomeViewModel : BaseViewModel() {
 
-    val homeRepository by lazy { HomeRepository() }
+    private val homeRepository by lazy { HomeRepository() }
 
 
     private val loginLiveData by lazy { MutableLiveData<String>() }
@@ -31,7 +31,7 @@ class HomeViewModel : BaseViewModel() {
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    fun onStart(){
+    fun onStart() {
         Log.e("-------->", "onStart")
     }
 }

@@ -26,12 +26,19 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="点击"
+                android:textSize="30sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:onClick="@{()->vm.addSum()}"
-                android:text="@{String.valueOf(bean.sum)  }"
-                android:textSize="30sp" />
+                android:layout_marginTop="20dp" />
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

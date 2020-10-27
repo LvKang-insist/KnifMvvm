@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.elvishew.xlog.XLog
 import com.hjq.toast.ToastUtils
 import com.standalone.core.base.ui.frag.KnifeBindingFragment
