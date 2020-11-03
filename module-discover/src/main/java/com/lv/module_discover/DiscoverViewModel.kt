@@ -3,6 +3,8 @@ package com.lv.module_discover
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.standalone.core.base.viewmodel.BaseViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.*
 
 /**
  * @name DiscoverViewModel
@@ -11,17 +13,19 @@ import com.standalone.core.base.viewmodel.BaseViewModel
  * @time 2020/5/19 22:59
  * @description
  */
+
+
 class DiscoverViewModel : BaseViewModel() {
 
+    private val _discover by lazy { MutableLiveData<TestBean>() }
+    val discover: LiveData<TestBean> = _discover
 
-    private val discoverLiveData by lazy { MutableLiveData<TestBean>() }
-    val discoverLiveDataObserver: LiveData<TestBean> = discoverLiveData
 
     var bean: TestBean = TestBean()
 
     fun requestBean() {
         bean.sum.set(0)
-        discoverLiveData.postValue(bean)
+        _discover.postValue(bean)
     }
 
     fun addSum() {

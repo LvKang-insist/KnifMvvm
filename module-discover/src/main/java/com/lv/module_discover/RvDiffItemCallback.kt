@@ -21,7 +21,7 @@ class RvDiffItemCallback(val old: List<String>, val new: List<String>) : DiffUti
 
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return old[oldItemPosition] != new[newItemPosition]
+        return old[oldItemPosition] == new[newItemPosition]
     }
 
     //

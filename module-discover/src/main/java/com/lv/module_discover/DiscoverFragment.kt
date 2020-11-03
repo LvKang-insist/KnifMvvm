@@ -1,6 +1,7 @@
 package com.lv.module_discover
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -63,6 +64,11 @@ class DiscoverFragment : KnifeBindingFragment<DiscoverFragBinding>() {
             adapter.addNewData(list2)
         }
 
+        viewModel.discover.observe(this, Observer {
+
+        })
+
+
         binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         binding.recycler.addItemDecoration(
             DividerItemDecoration(
@@ -82,10 +88,10 @@ class DiscoverFragment : KnifeBindingFragment<DiscoverFragBinding>() {
     class Adapter() : RecyclerView.Adapter<Adapter.Holder>() {
         var data = mutableListOf<String>()
 
-
         fun addNewData(list: MutableList<String>) {
             val diffResult = DiffUtil.calculateDiff(RvDiffItemCallback(data, list), false)
             data = list
+//            diffResult.dispatchUpdatesTo(this)
             diffResult.dispatchUpdatesTo(object : ListUpdateCallback {
                 override fun onChanged(position: Int, count: Int, payload: Any?) {
                     notifyItemRangeChanged(position, count, payload)
