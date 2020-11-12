@@ -13,8 +13,6 @@ import kotlinx.coroutines.flow.*
  * @time 2020/5/19 22:59
  * @description
  */
-
-
 class DiscoverViewModel : BaseViewModel() {
 
     private val _discover by lazy { MutableLiveData<TestBean>() }

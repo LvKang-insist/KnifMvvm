@@ -15,15 +15,19 @@ import java.lang.ref.WeakReference
  * @time 2020/5/18 21:46
  * @description Dialog View 的辅助处理类
  */
-class DialogViewHelper() {
+class DialogViewHelper {
 
-    lateinit var mContentView: View
+    var mContentView: View
 
     //缓存 ,软引用，防止内存泄露
     private val mCacheViews = SparseArray<WeakReference<View>>()
 
-    constructor(mContext: Context, mViewLayoutResId: Int) : this() {
+    constructor(mContext: Context, mViewLayoutResId: Int) {
         mContentView = LayoutInflater.from(mContext).inflate(mViewLayoutResId, null, false)
+    }
+
+    constructor(view: View) {
+        mContentView = view
     }
 
     /**

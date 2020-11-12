@@ -115,8 +115,7 @@ class FastController(
                 )
             }
             if (mView != null) {
-                viewHelper = DialogViewHelper()
-                viewHelper.mContentView = mView!!
+                viewHelper = DialogViewHelper(mView!!)
             }
             if (viewHelper == null) {
                 throw IllegalArgumentException("未调用 setContentView")

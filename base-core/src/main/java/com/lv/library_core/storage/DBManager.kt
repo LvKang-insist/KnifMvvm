@@ -12,7 +12,7 @@ import com.standalone.core.latte.Latte
  */
 object DBManager {
 
-  private  val database by lazy {
+    private val database by lazy {
         Room.databaseBuilder(
             Latte.getAppContext(), AppDataBase::class.java, "knife"
         )
@@ -37,18 +37,17 @@ object DBManager {
     }
 
 
-
     /**
      * 保存 User 数据
      */
-    fun insertUser(userEntity: UserEntity){
+    fun insertUser(userEntity: UserEntity) {
         database.getUserDao().insert(userEntity)
     }
 
     /**
      * 获取 User
      */
-    fun queryUser():List<UserEntity>{
-       return database.getUserDao().queryAll()
+    fun queryUser(): List<UserEntity> {
+        return database.getUserDao().queryAll()
     }
 }

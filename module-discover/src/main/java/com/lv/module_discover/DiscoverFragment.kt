@@ -1,7 +1,6 @@
 package com.lv.module_discover
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import com.standalone.core.base.ui.frag.KnifeBindingFragment
 import com.lv.module_discover.databinding.DiscoverFragBinding
 import com.standalone.core.utils.DataBindingConfig
 import com.xiaojinzi.component.anno.FragmentAnno
-import kotlinx.android.synthetic.main.discover_frag.*
 
 /**
  * @name HomeFragment
@@ -57,11 +55,7 @@ class DiscoverFragment : KnifeBindingFragment<DiscoverFragBinding>() {
         list2.add("10")
 
         viewModel.requestBean()
-        viewModel.discoverLiveDataObserver.observe(this, Observer {
-            binding.bean = it
-        })
         binding.tv.setOnClickListener {
-            adapter.addNewData(list2)
         }
 
         viewModel.discover.observe(this, Observer {
